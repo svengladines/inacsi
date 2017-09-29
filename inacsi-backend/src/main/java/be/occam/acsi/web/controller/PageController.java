@@ -46,7 +46,7 @@ public class PageController {
 		mav.setViewName( page );
 		
 		PageDTO pageDTO
-			= this.pageService.retrieve( page );
+			= this.pageService.guard().retrieve( page );
 		
 		mav.getModel().put( "page", pageDTO );
 

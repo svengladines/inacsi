@@ -3,8 +3,8 @@ package be.occam.acsi.jtest;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import be.occam.inacsi.repository.ArticleEntity;
-import be.occam.inacsi.repository.ArticleRepository;
+import be.occam.acsi.repository.ArticleEntity;
+import be.occam.acsi.repository.ArticleRepository;
 
 public class TestData {
 	

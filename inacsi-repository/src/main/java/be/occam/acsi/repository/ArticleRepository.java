@@ -1,4 +1,4 @@
-package be.occam.inacsi.repository;
+package be.occam.acsi.repository;
 
 import java.util.List;
 

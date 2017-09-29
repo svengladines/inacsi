@@ -1,4 +1,4 @@
-package be.occam.inacsi.repository;
+package be.occam.acsi.repository;
 
 import java.util.Date;
 
@@ -11,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.google.appengine.api.datastore.Key;
-
-import be.occam.acsi.domain.object.Article;
 
 @Entity
 @Cacheable(value=false)
@@ -83,20 +81,6 @@ public class ArticleEntity {
 
 	public void setPage(String page) {
 		this.page = page;
-	}
-	
-	public static Article article( ArticleEntity f ) {
-		
-		Article t
-			= new Article();
-		t.setId( f.getId() );
-		t.setTitle( f.getTitle() );
-		t.setText( f.getText() );
-		t.setVersion( f.getVersion() );
-		
-		return t;
-	
-		
 	}
 	
 }

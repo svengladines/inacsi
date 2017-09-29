@@ -8,8 +8,9 @@ import be.occam.acsi.domain.object.Article;
 import be.occam.acsi.domain.people.ArticleManager;
 import be.occam.acsi.web.dto.ArticleDTO;
 import be.occam.acsi.web.dto.PageDTO;
+import be.occam.acsi.web.util.DataGuard;
 
-public class PageService {
+public class PageService extends Service<PageService> {
 	
 	@Resource
 	ArticleManager articleManager;
@@ -34,5 +35,5 @@ public class PageService {
 		return pageDTO;
 		
 	} 
-
+	
 }

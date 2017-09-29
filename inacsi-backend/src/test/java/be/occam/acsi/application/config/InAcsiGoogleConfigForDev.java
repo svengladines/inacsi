@@ -12,7 +12,7 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 
 @Configuration
 @Profile({ConfigurationProfiles.DEV})
-public class InAcsiAppEngineConfigForDev {
+public class InAcsiGoogleConfigForDev {
 	
 	@Configuration
 	@Profile( ConfigurationProfiles.DEV )

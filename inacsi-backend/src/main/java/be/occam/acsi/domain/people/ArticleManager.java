@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import be.occam.acsi.domain.object.Article;
-import be.occam.inacsi.repository.ArticleEntity;
-import be.occam.inacsi.repository.ArticleRepository;
+import be.occam.acsi.repository.ArticleEntity;
+import be.occam.acsi.repository.ArticleRepository;
 
 public class ArticleManager {
 	
@@ -35,7 +35,7 @@ public class ArticleManager {
 				= mapped.get( id );
 			
 			Article article
-				= ArticleEntity.article( entity );
+				= Mapper.article( entity );
 			
 			if ( found == null ) {
 				

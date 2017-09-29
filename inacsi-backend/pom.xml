@@ -17,11 +17,18 @@
 	
 		<dependency>
 			<type>jar</type>
+			<groupId>be.occam.inacsi</groupId>
+			<artifactId>inacsi-repository</artifactId>
+			<version>1.0-LATEST-SNAPSHOT</version>
+		</dependency>
+	
+		<dependency>
+			<type>jar</type>
 			<groupId>be.occam</groupId>
 			<artifactId>occam-utils</artifactId>
 			<version>1.0-LATEST-SNAPSHOT</version>
 		</dependency>
-	
+		
 		<dependency>
 			<groupId>jstl</groupId>
  			<artifactId>jstl</artifactId>
