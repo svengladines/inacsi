@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import be.occam.acsi.domain.object.Article;
-import be.occam.acsi.repository.ArticleEntity;
-import be.occam.acsi.repository.ArticleRepository;
+import be.occam.inacsi.repository.ArticleEntity;
+import be.occam.inacsi.repository.ArticleRepository;
 
 public class ArticleManager {
 	
