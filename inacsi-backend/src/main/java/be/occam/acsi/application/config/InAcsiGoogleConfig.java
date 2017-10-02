@@ -12,14 +12,21 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import be.occam.utils.spring.configuration.ConfigurationProfiles;
 
 @Configuration
 @Profile(ConfigurationProfiles.PRODUCTION)
-public class InaAcsiGoogleConfig {
+public class InAcsiGoogleConfig {
 	
-	final static String JPA_PKG = "be.occam.acsi";
+	final static String JPA_PKG = "be.occam.acsi.repository";
+	
+	@Configuration
+	@EnableTransactionManagement
+	static class DomainConfigShared {
+		
+	}
 	
 	@Configuration
 	@Profile(ConfigurationProfiles.PRODUCTION)
@@ -30,7 +37,7 @@ public class InaAcsiGoogleConfig {
 		public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(PersistenceProvider persistenceProvider ) {
 			
 			LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-			factory.setPackagesToScan( "be.occam.inacsi.repository" );
+			factory.setPackagesToScan( JPA_PKG);
 			factory.setPersistenceProvider( persistenceProvider );
 			// factory.setDataSource(jpaDataSource);
 			factory.setPersistenceUnitName("vive-le-velo-repository");

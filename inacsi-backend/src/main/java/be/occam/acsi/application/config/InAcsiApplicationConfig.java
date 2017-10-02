@@ -35,7 +35,7 @@ public class InAcsiApplicationConfig {
 		= LoggerFactory.getLogger( InAcsiApplicationConfig.class );
 
 	final static String BASE_PKG 
-		= "be.occam.zoncolan";
+		= "be.occam.acsi";
 	
 	static class propertiesConfigurer {
 		

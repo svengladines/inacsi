@@ -224,8 +224,9 @@
 					<div class="article therapist showcase">
 						<img class="img-circle" src="resources/images/katrienbelmans.jpg" width="110" height="110" alt="">
 						<h3>Katrien Belmans</h3>
-						<p>
-							Erkend relatie- en gezinstherapeute
+						<c:set var="articleId" value="belmans-cover"/>
+						<p id="${articleId}" class="article" data-article-id="${page.articles[articleId].id}">
+							${page.articles[articleId].text}
 						</p>
 						<h4>Doelgroep</h4>
 						<p>

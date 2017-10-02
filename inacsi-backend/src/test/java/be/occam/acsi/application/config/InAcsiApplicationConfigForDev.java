@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import be.occam.acsi.jtest.DevData;
 import be.occam.acsi.web.util.DataGuard;
 import be.occam.acsi.web.util.DevGuard;
 import be.occam.utils.spring.configuration.ConfigurationProfiles;
@@ -98,6 +99,12 @@ public class InAcsiApplicationConfigForDev {
 			
 			return new DevGuard( ApiProxy.getCurrentEnvironment() );
 			
+		}
+		
+		@Bean
+		@Lazy(false)
+		DevData devData() {
+			return new DevData();
 		}
 		
 	}

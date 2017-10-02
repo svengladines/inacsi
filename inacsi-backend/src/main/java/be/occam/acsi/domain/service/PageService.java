@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import be.occam.acsi.domain.object.Article;
 import be.occam.acsi.domain.people.ArticleManager;
 import be.occam.acsi.web.dto.ArticleDTO;
@@ -15,6 +17,7 @@ public class PageService extends Service<PageService> {
 	@Resource
 	ArticleManager articleManager;
 	
+	@Transactional( readOnly=true )
 	public PageDTO retrieve( String page ) {
 		
 		PageDTO pageDTO
@@ -28,7 +31,7 @@ public class PageService extends Service<PageService> {
 			ArticleDTO dto
 				= ArticleDTO.dto( article );
 			
-			pageDTO.getArticles().add( dto );
+			pageDTO.getArticles().put( dto.getId(), dto );
 			
 		}
 		
