@@ -41,6 +41,7 @@ public class ArticleService extends Service<ArticleService> {
 			Article article
 				= Mapper.article( articleDTO );
 			
+			article.setPage( article.getPage() );
 			article.setVersion( System.currentTimeMillis() );
 			
 			article = this.articleManager.update( article );

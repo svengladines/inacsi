@@ -35,6 +35,7 @@ public class TestBuildPageScenario extends JTest {
 			= this.baseAPIURL().append( "/articles" ).toString();
 		
 		ArticleDTO article
+		
 			= new ArticleDTO();
 		article.setId( articleID );
 		article.setText( "updated text" );

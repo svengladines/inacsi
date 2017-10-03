@@ -30,13 +30,13 @@ public class ArticleManager {
 	@Resource
 	ArticleRepository articleRepository;
 	
-	public List<Article> findLatestByID( String page ) {
+	public List<Article> findLatestByID( String id ) {
 		
 		List<Article> articles
 			= list();
 		
 		List<ArticleEntity> byID
-			= this.articleRepository.findById( page );
+			= this.articleRepository.findById( id );
 		
 		for ( ArticleEntity entity : byID ) {
 			
@@ -56,31 +56,36 @@ public class ArticleManager {
 		List<Article> articles
 			= list();
 		
-		List<ArticleEntity> allByPage
+		List<ArticleEntity> byPage
 			= this.articleRepository.findByPage( page );
 		
+		List<Article> temporary
+			= list();
+		
+		for ( ArticleEntity entity : byPage ) {
+			
+			temporary.add( Mapper.article( entity ) );
+			
+		}
+	
 		Map<String,Article> mapped
 			= map();
 		
-		for ( ArticleEntity entity : allByPage ) {
+		for ( Article loaded : temporary ) {
 			
 			String id
-				= entity.getId();
+				= loaded.getId();
 			
-			Article found
+			Article fromMap
 				= mapped.get( id );
 			
-			Article article
-				= Mapper.article( entity );
-			
-			if ( found == null ) {
+			if ( fromMap == null ) {
 				
-				mapped.put( id, article );
+				mapped.put( id, loaded );
 				
 			}
-			else if ( article.getVersion() > found.getVersion() ) {
-					mapped.put( id, article );
-				
+			else if ( loaded.getVersion() > fromMap.getVersion() ) {
+				mapped.put( id, loaded );
 			}
 			else {
 				// this version was older ...

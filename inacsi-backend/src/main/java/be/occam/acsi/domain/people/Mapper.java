@@ -14,6 +14,7 @@ public static Article article( ArticleEntity f ) {
 		t.setTitle( f.getTitle() );
 		t.setText( f.getText() );
 		t.setVersion( f.getVersion() );
+		t.setPage( f.getPage() );
 		
 		return t;
 	
@@ -28,6 +29,7 @@ public static Article article( ArticleEntity f ) {
 		t.setTitle( f.getTitle() );
 		t.setText( f.getText() );
 		t.setVersion( f.getVersion() );
+		t.setPage( f.getPage() );
 		
 		return t;
 	
@@ -43,6 +45,7 @@ public static Article article( ArticleEntity f ) {
 		t.setTitle( f.getTitle() );
 		t.setText( f.getText() );
 		t.setVersion( f.getVersion() );
+		t.setPage( f.getPage() );
 		
 		return t;
 	

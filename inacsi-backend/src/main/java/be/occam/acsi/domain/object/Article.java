@@ -9,6 +9,7 @@ public class Article {
 	protected String title;
 	protected String text;
 	protected Long version;
+	protected String page;
 	
 	public Article() {
 	}
@@ -44,6 +45,13 @@ public class Article {
 	public void setVersion(Long version) {
 		this.version = version;
 	}
-	
+
+	public String getPage() {
+		return page;
+	}
+
+	public void setPage(String page) {
+		this.page = page;
+	}
 	
 }

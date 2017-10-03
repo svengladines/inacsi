@@ -8,6 +8,7 @@ public class ArticleDTO {
 	protected String title;
 	protected String text;
 	protected Long version;
+	protected String page;
 	
 	public String getId() {
 		return id;
@@ -34,6 +35,14 @@ public class ArticleDTO {
 	public void setVersion(Long version) {
 		this.version = version;
 	}
+	
+	public String getPage() {
+		return page;
+	}
+	public void setPage(String page) {
+		this.page = page;
+	}
+	
 	public static ArticleDTO dto( Article f ) {
 		
 		ArticleDTO t
@@ -43,6 +52,7 @@ public class ArticleDTO {
 		t.setTitle( f.getTitle() );
 		t.setText( f.getText() );
 		t.setVersion( f.getVersion() );
+		t.setPage( f.getPage() );
 		
 		return t;
 		
