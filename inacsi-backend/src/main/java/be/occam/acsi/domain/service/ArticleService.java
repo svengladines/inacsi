@@ -38,15 +38,17 @@ public class ArticleService extends Service<ArticleService> {
 		
 		if ( ! articles.isEmpty() ) {
 			
-			Article article
-				= Mapper.article( articleDTO );
+			Article toUpdate
+				= articles.get( 0 );
 			
-			article.setPage( article.getPage() );
-			article.setVersion( System.currentTimeMillis() );
+			toUpdate.setVersion( System.currentTimeMillis() );
+			toUpdate.setText( articleDTO.getText() );
 			
-			article = this.articleManager.update( article );
+			logger.info( "article [{}], on page [{}], update to version [{}], new text = [{}]", toUpdate.getId(), toUpdate.getPage(), toUpdate.getVersion(), toUpdate.getText() );
 			
-			logger.info( "article [{}] updated to version [{}], new text = [{}]", article.getId(), article.getVersion(), article.getText() );
+			Article updated = this.articleManager.update( toUpdate );
+			
+			logger.info( "article [{}] updated to version [{}], new text = [{}]", updated.getId(), updated.getVersion(), updated.getText() );
 			
 			// TODO: back to dto...
 			

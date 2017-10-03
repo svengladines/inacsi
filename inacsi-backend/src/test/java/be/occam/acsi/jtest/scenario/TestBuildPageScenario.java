@@ -31,6 +31,9 @@ public class TestBuildPageScenario extends JTest {
 		String articleID
 			= DevData.Ids.articleOne;
 		
+		String updatedText
+			= "boowyeah";
+		
 		String url
 			= this.baseAPIURL().append( "/articles" ).toString();
 		
@@ -38,7 +41,7 @@ public class TestBuildPageScenario extends JTest {
 		
 			= new ArticleDTO();
 		article.setId( articleID );
-		article.setText( "updated text" );
+		article.setText( updatedText );
 		
 		ResponseEntity<ArticleDTO> postResponse
 			= postJSON( url, article );
@@ -48,10 +51,12 @@ public class TestBuildPageScenario extends JTest {
 		String pageUrl
 			= this.baseUrl().append( "/page.html?page=" ).append( Ids.pageIndex ).toString();
 		
-		ResponseEntity<String> page
+		ResponseEntity<String> pageResponse
 			= Client.getHTML( pageUrl );
 		
-		logger.info( "new page is [{}]", page );
+		// logger.info( "new page is [{}]", page );
+		
+		assertTrue ( pageResponse.getBody().indexOf( updatedText ) != -1 ); 
 		
 	}
 

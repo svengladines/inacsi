@@ -10,11 +10,17 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import be.occam.acsi.domain.object.Article;
 import be.occam.acsi.repository.ArticleEntity;
 import be.occam.acsi.repository.ArticleRepository;
 
 public class ArticleManager {
+	
+	protected final Logger logger
+		= LoggerFactory.getLogger( this.getClass() );
 	
 	private final Comparator<Article> latest = new Comparator<Article> () {
 
@@ -59,6 +65,8 @@ public class ArticleManager {
 		List<ArticleEntity> byPage
 			= this.articleRepository.findByPage( page );
 		
+		logger.info( "page [{}], found [{}] articles", page, byPage.size() );
+		
 		List<Article> temporary
 			= list();
 		
@@ -82,13 +90,16 @@ public class ArticleManager {
 			if ( fromMap == null ) {
 				
 				mapped.put( id, loaded );
+				logger.info( "mapped article with id [{}] and version [{}] ", id, loaded.getVersion() );
 				
 			}
 			else if ( loaded.getVersion() > fromMap.getVersion() ) {
 				mapped.put( id, loaded );
+				logger.info( "updated mapped article with id [{}] and version [{}] and text [{}]", id, loaded.getVersion(), loaded.getText() );
 			}
 			else {
 				// this version was older ...
+				logger.info( "did not update mapped article with id [{}] and version [{}] ", id, loaded.getVersion() );
 			}
 			
 		}
