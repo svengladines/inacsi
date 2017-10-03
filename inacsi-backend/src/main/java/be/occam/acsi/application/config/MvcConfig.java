@@ -6,6 +6,7 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import be.occam.acsi.web.controller.ArticlesController;
 import be.occam.acsi.web.controller.EntriesController;
 import be.occam.acsi.web.controller.PageController;
 
@@ -54,6 +55,13 @@ public class MvcConfig {
 		public PageController pageController() {
 			
 			return new PageController();
+			
+		}
+		
+		@Bean
+		public ArticlesController articlesController() {
+			
+			return new ArticlesController();
 			
 		}
 		

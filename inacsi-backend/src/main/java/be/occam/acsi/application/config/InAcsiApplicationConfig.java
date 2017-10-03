@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import be.occam.acsi.domain.people.ArticleManager;
 import be.occam.acsi.domain.people.MailMan;
+import be.occam.acsi.domain.service.ArticleService;
 import be.occam.acsi.domain.service.EntryService;
 import be.occam.acsi.domain.service.PageService;
 import be.occam.acsi.web.util.DataGuard;
@@ -94,6 +95,11 @@ public class InAcsiApplicationConfig {
 		@Bean
 		public PageService pageService( ) {
 			return new PageService(  );
+		}
+		
+		@Bean
+		public ArticleService articleService() {
+			return new ArticleService();
 		}
 		
 	}

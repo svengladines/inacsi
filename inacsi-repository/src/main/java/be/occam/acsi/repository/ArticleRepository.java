@@ -12,5 +12,6 @@ public interface ArticleRepository extends JpaRepository<ArticleEntity, String>{
 	public ArticleEntity findOneByIdAndVersion( String id, String version );
 	
 	public List<ArticleEntity> findByPage( String page );
+	public List<ArticleEntity> findById( String id );
 
 }
