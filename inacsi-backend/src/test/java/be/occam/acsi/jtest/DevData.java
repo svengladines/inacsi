@@ -30,6 +30,7 @@ public class DevData {
 		indexArticleOne.setId( Ids.articleOne );
 		indexArticleOne.setVersion( 1L );
 		indexArticleOne.setPage( Ids.pageIndex );
+		indexArticleOne.setTitle( "Katrien Belmans" );
 		indexArticleOne.setText( "Belmans Cover Text");
 		
 		this.articleRepository.saveAndFlush( indexArticleOne );

@@ -26,6 +26,40 @@ public class ArticleService extends Service<ArticleService> {
 	ArticleManager articleManager;
 	
 	@Transactional( readOnly = false )
+	public ArticleDTO findOne( String id, String version ) {
+		
+		String articleID
+			= id;
+		
+		ArticleDTO articleDTO
+			= null;
+		
+		logger.info( "findOne [{}]", articleDTO );
+		
+		if ( "latest".equals( version ) ) {
+			
+			List<Article> articles
+				= this.articleManager.findLatestByID( articleID );
+		
+			if ( ! articles.isEmpty() ) {
+				
+				Article article
+					= articles.get( 0 );
+				
+				articleDTO = Mapper.dto( article );
+				
+			}
+			
+		}
+		else {
+			// TODO, match version
+		}
+		
+		return articleDTO;
+		
+	}
+	
+	@Transactional( readOnly = false )
 	public ArticleDTO consume( ArticleDTO articleDTO ) {
 		
 		String articleID

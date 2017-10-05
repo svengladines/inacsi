@@ -36,6 +36,21 @@ public static Article article( ArticleEntity f ) {
 		
 	}
 	
+	public static ArticleDTO dto( Article f ) {
+		
+		ArticleDTO t
+			= new ArticleDTO();
+		t.setId( f.getId() );
+		t.setTitle( f.getTitle() );
+		t.setText( f.getText() );
+		t.setVersion( f.getVersion() );
+		t.setPage( f.getPage() );
+		
+		return t;
+	
+		
+	}
+	
 	public static ArticleEntity entity( Article f ) {
 		
 		ArticleEntity t

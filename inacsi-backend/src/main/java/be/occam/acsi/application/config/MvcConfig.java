@@ -3,9 +3,12 @@ package be.occam.acsi.application.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.datetime.DateFormatter;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import be.occam.acsi.web.controller.ArticleController;
 import be.occam.acsi.web.controller.ArticlesController;
 import be.occam.acsi.web.controller.EntriesController;
 import be.occam.acsi.web.controller.PageController;
@@ -28,7 +31,6 @@ public class MvcConfig {
 		
 	}
 	
-	/*
 	@Bean
 	MultipartResolver multipartResolver() {
 		
@@ -39,7 +41,6 @@ public class MvcConfig {
 		return resolver;
 		
 	}
-	*/
 	
 	@Configuration
 	public static class ControllerConfig {
@@ -62,6 +63,13 @@ public class MvcConfig {
 		public ArticlesController articlesController() {
 			
 			return new ArticlesController();
+			
+		}
+		
+		@Bean
+		public ArticleController articleController() {
+			
+			return new ArticleController();
 			
 		}
 		

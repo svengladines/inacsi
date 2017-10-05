@@ -12,69 +12,35 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 import be.occam.acsi.domain.service.ArticleService;
 import be.occam.acsi.web.dto.ArticleDTO;
-import be.occam.acsi.web.dto.EntryDTO;
+import be.occam.acsi.web.dto.PageDTO;
 
 @Controller
-@RequestMapping(value="/articles")
-public class ArticlesController {
+@RequestMapping(value="/articles/{id}/versions/{version}")
+public class ArticleController {
 	
 	private final Logger logger 
-		= LoggerFactory.getLogger( ArticlesController.class );
+		= LoggerFactory.getLogger( ArticleController.class );
 	
 	@Resource
 	ArticleService articleService;
 	
-	@RequestMapping( method = { RequestMethod.POST }, consumes = { MediaType.APPLICATION_JSON_VALUE } )
-	@ResponseBody
-	public ResponseEntity<ArticleDTO> post( @RequestBody ArticleDTO articleDTO, WebRequest request ) {
+	@RequestMapping( method = { RequestMethod.GET }, produces = { MediaType.APPLICATION_JSON_VALUE } )
+	public ResponseEntity<ArticleDTO> get( @PathVariable String id, @PathVariable String version ) {
 		
-		logger.info( "Article received: [{}]", articleDTO.getId() );
+		logger.info( "GET request received for article [{}], version [{}]", id, version );
 		
-		HttpHeaders httpHeaders
-			= new HttpHeaders();
-
-		httpHeaders.add("Access-Control-Allow-Origin", "*" ) ;
-		httpHeaders.add("Access-Control-Allow-Methods", "GET,OPTIONS" );
-		httpHeaders.add("Access-Control-Allow-Credentials","true");
+		ArticleDTO articleDTO
+			= this.articleService.guard().findOne( id, version );
 		
-		this.articleService.guard().consume( articleDTO );
-
-		ResponseEntity<ArticleDTO> response
-			= new ResponseEntity<ArticleDTO>( articleDTO , httpHeaders, HttpStatus.OK );
-
-
-		return response;
-
-}
-	
-	@RequestMapping( method = { RequestMethod.POST }, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE } )
-	public ModelAndView post( @RequestParam(value="id",required=false) String id, @RequestParam(required=false) String text, WebRequest request ) {
-		// SGL| use requestparam for string parts, not requestpart...
-		logger.info( "Article received: [{}]", id );
-		
-		ArticleDTO dto
-			= new ArticleDTO();
-		dto.setId( id );
-		dto.setText( text );
-				
-		this.articleService.guard().consume( dto );
-
-		ModelAndView mav
-			= new ModelAndView();
-		mav.setViewName( "article" );
-		
-		return mav;
+		return response( articleDTO, HttpStatus.OK );
 
 }
 
