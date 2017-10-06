@@ -3,6 +3,7 @@ package be.occam.acsi.web.controller;
 import static be.occam.utils.spring.web.Controller.response;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +37,7 @@ public class PageController {
 	PageService pageService;
 	
 	@RequestMapping( method = { RequestMethod.GET }, produces = { MediaType.TEXT_HTML_VALUE } )
-	public ModelAndView get( @RequestParam String page ) {
+	public ModelAndView get( @RequestParam String page, HttpServletResponse httpServletResponse ) {
 		
 		logger.info( "page request received for page [{}]", page );
 		
@@ -49,7 +50,12 @@ public class PageController {
 			= this.pageService.guard().retrieve( page );
 		
 		mav.getModel().put( "page", pageDTO );
-
+		
+		httpServletResponse.addHeader("Access-Control-Allow-Origin", "*" ) ;
+		httpServletResponse.addHeader("Access-Control-Allow-Methods", "GET" );
+		httpServletResponse.addHeader("Access-Control-Allow-Credentials","true");
+		httpServletResponse.addHeader("Access-Control-Allow-Headers","Content-Type");
+		
 		return mav;
 
 }

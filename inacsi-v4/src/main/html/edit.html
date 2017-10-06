@@ -97,8 +97,6 @@
 			
 				<form id="articleForm" class="form-horizontal" role="form" method="post" action="http://localhost:8099/api/articles" enctype="multipart/form-data" accept-charset="utf-8">
 				
-				<h3>Artikel</h3>
-				
 				<div class="form-group">
 						<label for="article-title" class="col-sm-4 control-label">Titel</label>
 						<div class="col-sm-8">
@@ -232,9 +230,9 @@
 			tinymce.init({
 				  selector: '#text',
 				  theme: 'inlite',
-				  plugins: 'image media table link paste contextmenu textpattern autolink codesample',
-				  insert_toolbar: 'quickimage quicktable media codesample',
-				  selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+				  plugins: 'image media link paste contextmenu textpattern autolink codesample',
+				  insert_toolbar: 'media codesample',
+				  selection_toolbar: 'bold italic | quicklink',
 				  inline: true,
 				  paste_data_images: true,
 				  content_css: []

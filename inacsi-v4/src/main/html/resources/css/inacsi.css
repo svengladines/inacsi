@@ -705,18 +705,18 @@ a:after {
     color: white;	
 }
 
-.article {
+.box {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border: 1px solid #e6e6e6;
 }
 
-.article-header {
+.box-header {
 	padding: 8px;
 	border-bottom: 1px solid #e6e6e6;
 }
 
-.article-body {
+.box-body {
 	padding: 8px;
 }
 
@@ -724,7 +724,7 @@ a:after {
 	background-color: #ffffff;
 }
 
-.east .article {
+.east .box {
 	background-color: #f9f9f9;
 }
 
@@ -732,6 +732,6 @@ a:after {
 	background-color: #f9f9f9;
 }
 
-.west .article {
+.west .box {
 	background-color: #ffffff;
 }
