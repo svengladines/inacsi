@@ -1,3 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri = "http://www.springframework.org/tags" prefix = "spring"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
    <div class="navbar navbar navbar-acsi">
       <div class="container">
         <div class="navbar-header">
@@ -38,15 +45,18 @@
 			<div class="row showcases">
 			
 				<div class="col-sm-4">
-					<div id="aanmelden" class="showcase article">
-						<h3><i class="fa fa-calendar"></i></h3>
-						<h3>Aanmelden</h3>
-						<p>Aanmelden voor een eerste afspraak kan via </p>
-							<ul class="list-unstyled">
-								<li><i class="fa fa-laptop"></i>&nbsp;&nbsp;<strong><a href="entry.html">webformulier</a></strong></li>
-								<li><i class="fa fa-phone"></i>&nbsp;&nbsp;<strong>016/43.55.71</strong></li>
-								<li><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;info@inacsi.be</li>
-							</ul>
+					<div id="aanmelden" class="showcase">
+						<h3 ><i class="fa fa-calendar"></i></h3>
+						<h3 class="article" data-article-id="entry-title" >Aanmelden</h3>
+						<div class="article" data-article-id="entry">
+							<c:set var="articleId" value="entry"/>
+							${page.articles[articleId].text}
+						</div>
+						<ul class="list-unstyled">
+							<li><i class="fa fa-laptop"></i>&nbsp;&nbsp;<strong><a href="entry.html">webformulier</a></strong></li>
+							<li><i class="fa fa-phone"></i>&nbsp;&nbsp;<strong>016/43.55.71</strong></li>
+							<li><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;info@inacsi.be</li>
+						</ul>
 					</div>
 				</div>
 				
@@ -166,7 +176,7 @@
 			<div class="row showcases">
 			
 				<div class="col-sm-6">
-					<div class="article therapist showcase">
+					<div class="box therapist showcase">
 						<img class="img-circle" src="resources/images/katrienbelmans.jpg" width="110" height="110" alt="">
 						<h3>Katrien Belmans</h3>
 						<c:set var="articleId" value="belmans-cover"/>

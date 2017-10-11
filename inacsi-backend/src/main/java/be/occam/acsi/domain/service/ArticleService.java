@@ -87,6 +87,18 @@ public class ArticleService extends Service<ArticleService> {
 			// TODO: back to dto...
 			
 		}
+		else if ( articleDTO.getVersion() == 1L ) {
+			
+			Article toUpdate
+				= Mapper.article( articleDTO );
+			
+			logger.info( "article [{}], on page [{}], initial version, text = [{}]", toUpdate.getId(), toUpdate.getPage(), toUpdate.getVersion(), toUpdate.getText() );
+			
+			Article updated = this.articleManager.create( toUpdate );
+			
+			logger.info( "article [{}], on page [{}], initial version, text = [{}]", updated.getId(), updated.getPage(), updated.getVersion(), updated.getText() );
+			
+		}
 		else {
 			logger.warn( "article [{}], no initial version found, not updated", articleID );
 		}

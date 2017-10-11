@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -20,6 +21,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import be.occam.acsi.domain.data.ProductionData;
 import be.occam.acsi.domain.people.ArticleManager;
 import be.occam.acsi.domain.people.MailMan;
 import be.occam.acsi.domain.service.ArticleService;
@@ -115,6 +117,18 @@ public class InAcsiApplicationConfig {
 		@Bean
 		ArticleManager articleManager() {
 			return new ArticleManager();
+		}
+		
+	}
+	
+	@Configuration
+	@Profile({ConfigurationProfiles.PRODUCTION, ConfigurationProfiles.DEV})
+	public static class DataConfig {
+		
+		@Bean
+		@Lazy( false )
+		public ProductionData productionData() {
+			return new ProductionData();
 		}
 		
 	}

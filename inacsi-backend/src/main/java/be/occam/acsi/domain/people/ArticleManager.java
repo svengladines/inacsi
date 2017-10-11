@@ -111,6 +111,37 @@ public class ArticleManager {
 		
 	}
 	
+	public Article create( Article article ) {
+		
+		String articleID 
+			= article.getId();
+		
+		Article created
+			= null;
+		
+		List<Article> previousVersions
+			= this.findLatestByID( articleID );
+	
+		if ( previousVersions.isEmpty() ) {
+			
+			ArticleEntity entity
+				= Mapper.entity( article );
+		
+			entity = this.articleRepository.saveAndFlush( entity );
+			created = Mapper.article( entity );	
+			
+			logger.info( "article with id [{}] created", articleID );
+			
+		}
+		else {
+			logger.warn( "article with id [{}] already exists, hence not created", articleID );
+		}
+		
+		
+		
+		return created;
+	}
+	
 	public Article update( Article article ) {
 		
 		Article updated

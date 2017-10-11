@@ -47,6 +47,18 @@
 	
 	var $jq = jQuery.noConflict();
 	
+	var addListeners = function ( html ) {
+		
+		$jq(".article").click( function( event ) {
+			
+			var id = $jq(this).attr( "data-article-id" );
+			
+			window.location.href = "edit.html?article=" + id;
+			
+		});
+		
+	}
+	
 	var renderPage = function ( html ) {
 		
 		$jq("#bdy").html( html );
@@ -82,7 +94,7 @@
 	var loadThePage = function ( pageID ) {
 		
 		var url = "http://localhost:8099/page.html?page=" + pageID ;
-		loadPage( url, [ renderPage ] );
+		loadPage( url, [ renderPage, addListeners ] );
 		
 	};
 	
