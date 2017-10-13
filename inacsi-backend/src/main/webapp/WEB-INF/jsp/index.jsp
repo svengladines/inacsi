@@ -45,11 +45,11 @@
 			<div class="row showcases">
 			
 				<div class="col-sm-4">
-					<div id="aanmelden" class="showcase">
-						<h3 ><i class="fa fa-calendar"></i></h3>
-						<h3 class="article" data-article-id="entry-title" >Aanmelden</h3>
-						<div class="article" data-article-id="entry">
-							<c:set var="articleId" value="entry"/>
+					<c:set var="articleId" value="entry"/>
+					<div id="aanmelden" class="showcase article" data-article-id="${page.articles[articleId].id}">
+						<h3><i class="fa fa-calendar"></i></h3>
+						<h3>${page.articles[articleId].title}</h3>
+						<div>
 							${page.articles[articleId].text}
 						</div>
 						<ul class="list-unstyled">
