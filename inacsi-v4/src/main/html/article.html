@@ -3,7 +3,7 @@
 
 <head>
 	
-	<title>ACSI beheer</title>
+	<title>ACSI artikel</title>
 	
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +29,9 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     
+    <!-- captcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -93,29 +96,15 @@
 		
 			<div class="row">
 			
-				<form id="articleForm" class="form-horizontal" role="form" method="post" action="http://localhost:8099/api/articles" enctype="multipart/form-data" accept-charset="utf-8">
+				<p>
+					Klik op het deel van het artikel dat je wil aanpassen.
+				</p>
+			
+				<div class="article col-s-12">
 				
-					<div class="form-group">
-							<label for="article-current-text" class="col-sm-4 control-label">Huidige versie</label>
-							<div class="col-sm-8">
-								<div id="article-current-text"></div>
-							</div>
-					</div>
 					
-					<div class="form-group">
-							<label for="article-text" class="col-sm-4 control-label">Nieuwe tekst</label>
-							<div class="col-sm-8">
-								<div id="text" class="tiny"></div>
-							</div>
-					</div>
-	
-						<div class="form-group">
-						<label class="col-sm-4 control-label"></label>
-						<div class="col-sm-8">
-							<button type="submit" id="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Verstuur</button>
-						</div>
-					</div>
-				</form>
+				
+				</div>
 			
 			</div>
 		</div>
@@ -158,20 +147,6 @@
 	<script>
 	
 		var $jq = jQuery.noConflict();
-		
-		var addListeners = function ( html ) {
-			
-			$jq(".editable").each( function( event ) {
-				
-				var id = $jq(this).attr( "data-editable-id" );
-				
-				var url = "http://localhost:8099/api/articles/" + id + "/versions/latest" ;
-				
-				loadEditable( url, [ renderEditable ] );
-				
-			});
-			
-		}
 		
 		var renderCurrentArticle = function( article ) {
 			
@@ -217,15 +192,19 @@
 		var loadCurrentArticle = function ( articleID ) {
 			
 			var url = "http://localhost:8099/api/articles/" + articleID + "/versions/latest";
-			getArticle( url, [ renderCurrentArticle, addListeners ] );
+			getArticle( url, [ renderCurrentArticle, renderNewArticle ] );
 			
 		};
 		
-		var renderEditable = function( editable ) {
+		$jq("#submitx").click( function( event ) {
 			
-			$jq("[data-editable-id='" + editable.id + "']").html( editable.text );
+			//event.preventDefault();
 			
-		};
+			//$jq( "#article-new-text" ).val( $jq( "#tinymce" ).html() );
+			
+			$jq("#articleForm").submit();
+			
+		});
 		
 		var loadEditable = function ( url, callbacks ) {
 			
@@ -252,16 +231,6 @@
 			});
 			
 		}
-		
-		$jq("#submitx").click( function( event ) {
-			
-			//event.preventDefault();
-			
-			//$jq( "#article-new-text" ).val( $jq( "#tinymce" ).html() );
-			
-			$jq("#articleForm").submit();
-			
-		});
 		
 	
 		$jq( document ).ready(function() {

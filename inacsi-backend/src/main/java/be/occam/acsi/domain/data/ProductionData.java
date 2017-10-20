@@ -27,10 +27,12 @@ public class ProductionData {
 	@PostConstruct
 	public void defaultArticles() {
 		
-		Map<String,ClassPathResource[]> defaultArticles
+		Map<String,ClassPathResource> defaultArticles
 			= map();
 		
-		defaultArticles.put( "entry" , new ClassPathResource[] { new ClassPathResource( "articles/entry-title.html" ), new ClassPathResource( "articles/entry.html" ) } );
+		defaultArticles.put( "entry" , new ClassPathResource( "articles/entry.html" ) );
+		defaultArticles.put( "entry-title" , new ClassPathResource( "editables/entry-title.html" ) );
+		defaultArticles.put( "entry-text" , new ClassPathResource( "editables/entry-text.html" ) );
 		
 		for ( String articleID : defaultArticles.keySet() ) {
 			
@@ -40,54 +42,29 @@ public class ProductionData {
 			if ( found == null ) {
 				
 				try {
-						ArticleDTO newArticle
+					
+					ArticleDTO newArticle
 							= new ArticleDTO();
 						
-						{
-							ClassPathResource resource
-								= defaultArticles.get( articleID )[0];
-							
-							InputStream is
-								= resource.getInputStream();
-							
-							ByteArrayOutputStream bis
-								= new ByteArrayOutputStream( 1024 );
-							
-							int bt;
-							while ( ( bt = is.read() ) != -1 ) {
-								bis.write( bt );
-							}
-							
-							String string
-								= bis.toString( "utf-8" );
-							
-							newArticle.setTitle( string );
-						}
-						
-						{
-							ClassPathResource resource
-								= defaultArticles.get( articleID )[1];
-							
-							InputStream is
-								= resource.getInputStream();
-							
-							ByteArrayOutputStream bis
-								= new ByteArrayOutputStream( 1024 );
-							
-							int bt;
-							while ( ( bt = is.read() ) != -1 ) {
-								bis.write( bt );
-							}
-							
-							String string
-								= bis.toString( "utf-8" );
-						
-							newArticle.setText( string );
-							
-							
-						}
+					ClassPathResource resource
+						= defaultArticles.get( articleID );
+					
+					InputStream is
+						= resource.getInputStream();
+					
+					ByteArrayOutputStream bis
+						= new ByteArrayOutputStream( 1024 );
+					
+					int bt;
+					while ( ( bt = is.read() ) != -1 ) {
+						bis.write( bt );
+					}
+					
+					String string
+						= bis.toString( "utf-8" );
 					
 					newArticle.setId( articleID );
+					newArticle.setText( string );
 					
 					newArticle.setVersion( 1L );
 					newArticle.setPage( "index" );

@@ -57,11 +57,53 @@
 			
 		});
 		
+		$jq(".editable").each( function( event ) {
+			
+			var id = $jq(this).attr( "data-editable-id" );
+			
+			var url = "http://localhost:8099/api/articles/" + id + "/versions/latest" ;
+			
+			loadEditable( url, [ renderEditable ] );
+			
+		});
+		
 	}
 	
 	var renderPage = function ( html ) {
 		
 		$jq("#bdy").html( html );
+		
+	}
+	
+	var renderEditable = function( editable ) {
+		
+		$jq("[data-editable-id='" + editable.id + "']").html( editable.text );
+		
+	};
+	
+	var loadEditable = function ( url, callbacks ) {
+		
+		$jq.ajax( {
+			type: "get",
+			url: url,
+			dataType: "json",
+		    processData: true,
+			success: function( returned ) {
+				if ( callbacks ) {
+					for ( var i in callbacks ) {
+						var callback = callbacks[ i ];
+						callback( returned );	
+					}
+					
+				}
+				else {
+					// success( button, statusElement, "Opgeslagen" );
+				}
+			},
+			error: function(  jqXHR, textStatus, errorThrown ) {
+				console.log( errorThrown );
+			}
+		});
 		
 	}
 	

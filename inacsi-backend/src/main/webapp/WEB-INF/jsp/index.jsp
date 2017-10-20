@@ -47,16 +47,7 @@
 				<div class="col-sm-4">
 					<c:set var="articleId" value="entry"/>
 					<div id="aanmelden" class="showcase article" data-article-id="${page.articles[articleId].id}">
-						<h3><i class="fa fa-calendar"></i></h3>
-						<h3>${page.articles[articleId].title}</h3>
-						<div>
 							${page.articles[articleId].text}
-						</div>
-						<ul class="list-unstyled">
-							<li><i class="fa fa-laptop"></i>&nbsp;&nbsp;<strong><a href="entry.html">webformulier</a></strong></li>
-							<li><i class="fa fa-phone"></i>&nbsp;&nbsp;<strong>016/43.55.71</strong></li>
-							<li><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;info@inacsi.be</li>
-						</ul>
 					</div>
 				</div>
 				
