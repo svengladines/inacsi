@@ -41,7 +41,8 @@
     <script type="text/javascript" src="resources/javascript/moment.js"></script>
     <script type="text/javascript" src="resources/javascript/templates.js"></script>
     <script type="text/javascript" src="resources/bootstrap-3.3.5/js/bootstrap.js"></script>	
-    <script type="text/javascript" src="resources/javascript/inacsi.js"></script>	
+    <script type="text/javascript" src="resources/javascript/inacsi.js"></script>
+    <script type="text/javascript" src="resources/javascript/inacsi-admin.js"></script>		
     
     <script type="text/javascript" src="resources/tinymce-4.7.0/js/tinymce/tinymce.min.js"></script> 
 
@@ -93,31 +94,14 @@
 		
 			<div class="row">
 			
-				<form id="articleForm" class="form-horizontal" role="form" method="post" action="http://localhost:8099/api/articles" enctype="multipart/form-data" accept-charset="utf-8">
-				
-					<div class="form-group">
-							<label for="article-current-text" class="col-sm-4 control-label">Huidige versie</label>
-							<div class="col-sm-8">
-								<div id="article-current-text"></div>
-							</div>
-					</div>
-					
-					<div class="form-group">
-							<label for="article-text" class="col-sm-4 control-label">Nieuwe tekst</label>
-							<div class="col-sm-8">
-								<div id="text" class="tiny"></div>
-							</div>
-					</div>
-	
-						<div class="form-group">
-						<label class="col-sm-4 control-label"></label>
-						<div class="col-sm-8">
-							<button type="submit" id="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Verstuur</button>
-						</div>
-					</div>
-				</form>
-			
+				<span id="article-id"></span>
+				<span id="page-id"></span>
+				<div id="article" class="col-sm-12 article-edit">
+					<button type="button" class="btn btn-primary btn-publish">Publiceer</button>
+					<div id="article-text"></div>
+				</div>
 			</div>
+			
 		</div>
 			
 	</section>
@@ -171,20 +155,53 @@
 				
 			});
 			
+			$jq(".editable").click( function( event ) {
+				
+				$jq(".editable").removeClass("tiny");
+				$jq( this ).addClass( "tiny" );
+				
+				$jq( this ).addClass( "editable-touched" );
+				
+				tinify();
+				
+			});
+			
+			$jq(".btn-publish").click( function( event ) {
+				
+				$jq( ".editable-touched" ).each( function() {
+					
+					var editableID 
+						= $jq( this ).attr("data-editable-id"); 
+				
+					var element
+						= $jq("[data-editable-id='" + editableID + "']");
+				
+					var editable
+						= new Editable( editableID, element.html() );
+				
+					var url
+						= editablesURL( );
+				
+					postEditable( url, editable, publishPageWhenReady );
+					
+				});
+				
+			});
+			
+		}
+		
+		var publishPageWhenReady = function() {
+			
+			var articleID 
+				= getParameter(window.location.href,"article"); 
+			
 		}
 		
 		var renderCurrentArticle = function( article ) {
 			
-			$jq("#article-current-id").val( article.id );
-			$jq("#article-current-title").html( article.title );
-			$jq("#article-current-text").html( article.text );
-			
-		};
-		
-		var renderNewArticle = function( article ) {
-			
-			$jq("#title").html( article.title );
-			$jq("#text").html( article.text );
+			$jq("#article-id").val( article.id );
+			$jq("#article-text").html( article.text );
+			$jq("#page-id").val( article.page );
 			
 		};
 		
@@ -223,7 +240,10 @@
 		
 		var renderEditable = function( editable ) {
 			
-			$jq("[data-editable-id='" + editable.id + "']").html( editable.text );
+			var element
+				= $jq("[data-editable-id='" + editable.id + "']");
+			
+			element.html( editable.text );
 			
 		};
 		
@@ -253,18 +273,7 @@
 			
 		}
 		
-		$jq("#submitx").click( function( event ) {
-			
-			//event.preventDefault();
-			
-			//$jq( "#article-new-text" ).val( $jq( "#tinymce" ).html() );
-			
-			$jq("#articleForm").submit();
-			
-		});
-		
-	
-		$jq( document ).ready(function() {
+		var tinify = function( ) {
 			
 			tinymce.init({
 				  selector: '.tiny',
@@ -276,6 +285,11 @@
 				  paste_data_images: true,
 				  content_css: []
 				});
+			
+		}
+		
+	
+		$jq( document ).ready(function() {
 			
 			var articleID 
 				= getParameter(window.location.href,"article"); 

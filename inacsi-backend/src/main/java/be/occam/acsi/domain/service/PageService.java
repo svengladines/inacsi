@@ -39,4 +39,11 @@ public class PageService extends Service<PageService> {
 		
 	} 
 	
+	@Transactional( readOnly=true )
+	public PageDTO publish( String page, String version ) {
+		
+		return null;
+		
+	}
+	
 }
