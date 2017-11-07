@@ -121,10 +121,17 @@ section {
 	color: #3498db;
 }
 
-.section-footer {
+#footer {
 	color: white;
 	background-color: #3498db;
 	padding-bottom: 35px;
+	width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .section-header h4 {
@@ -179,13 +186,6 @@ section {
 .nav-list .icon-share {
    float: right;
    margin-top: 10px;
-}
-
-.content {
-	border: 3px solid #f3a55a;
-	border-radius: 5px;
-	padding: 10px;
-	background-color: #ffffff;
 }
 
 .content li {
@@ -734,4 +734,10 @@ a:after {
 
 .west .box {
 	background-color: #ffffff;
+}
+
+.btn-fab {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
 }

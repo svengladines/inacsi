@@ -1,3 +1,19 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#content { 
+    padding-bottom: 16em;
+    padding-top: 20px;
+}
+
 .article-edit {
 	
 	border: 1px solid rgb(229, 229, 229);
@@ -36,7 +52,7 @@
    cursor: text;
 }
 
-.btn-publish {
+.actions {
 	position: absolute;
 	top: 15px;
 	right: 15px;

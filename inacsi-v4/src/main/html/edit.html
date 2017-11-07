@@ -50,94 +50,67 @@
 
 <body>
 
-    <div class="navbar navbar navbar-acsi">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div>
-          		<img src="resources/images/logo.gif" title="ACSI" height="60"/>
-          </div>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="edit.html">Bewerken</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-    
-	<section>
-	
-		<div class="section-header south">
-	
-			<div class="container">
-	
-				<div class="row centered">
+	<div class="wrapper">
+
+	    <div class="navbar navbar navbar-acsi">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <div>
+	          		<img src="resources/images/logo.gif" title="ACSI" height="60"/>
+	          </div>
+	        </div>
+	        <div class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav navbar-right">
+	            <li><a href="edit.html">Bewerken</a></li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </div>
+	    
+		<div class="content">
+		
+			<div class="section-header south">
+		
+				<div class="container">
+		
+					<div class="row centered">
+					
+						<h4>Bewerken</h4>
+						<p>
+							Pas de tekst van een artikel van de website aan.
+						</p>
+					</div>
 				
-					<h4>Bewerken</h4>
-					<p>
-						Pas de tekst van een artikel van de website aan.
-					</p>
 				</div>
 			
 			</div>
-		
-		</div>
-		
-		<br/>
-	
-		<div class="container">
-		
-			<div class="row">
 			
-				<span id="article-id"></span>
-				<span id="page-id"></span>
-				<div id="article" class="col-sm-12 article-edit">
-					<button type="button" class="btn btn-primary btn-publish">Publiceer</button>
-					<div id="article-text"></div>
+			<br/>
+			
+			<div class="container">
+			
+				<div class="row">
+				
+					<span id="article-id"></span>
+					<span id="page-id"></span>
+					<div id="article" class="col-sm-12 article-edit">
+						<div id="article-text"></div>
+					</div>
+					
 				</div>
+				
 			</div>
-			
+				
 		</div>
-			
-	</section>
-	
-	<section class="section-footer">
-		<div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-				<h4>Groepspraktijk Nieuwrode</h4>
-				<p>
-					Dorp 13, bus 1<br/>
-					3221 Nieuwrode
-				</p>
-			</div>
-			<div class="col-sm-4">
-				<h4>Praktijkruimte Linden</h4>
-				<p>
-					Houwaartstraat 114<br/>
-					3210 Linden
-				</p>
-			</div>
-			<div class="col-sm-4">
-				<h4>Contacteer ons</h4>
-				<ul class="list-unstyled">
-					<li><i class="fa fa-phone"></i>&nbsp;&nbsp;<strong>016/43.55.71</strong></li>
-					<li><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;info@inacsi.be
-				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<span><i class="fa fa-copyright"></i>&nbsp; ACSI 2016</span>
-			</div>
-		</div>
+		
+		<button id="btn-preview" type="button" class="btn btn-primary btn-fab">Preview</button><br/>
+		
 	</div>
-	</section>
 	
 	<script>
 	
@@ -164,6 +137,16 @@
 				
 				tinify();
 				
+			});
+			
+			$jq(".editable").focusout( function( event ) {
+				
+				$jq(".editable").removeClass("tiny");
+				
+			});
+			
+			$jq("#btn-preview").click( function( event ) {
+				window.location.href= "preview.html?page=index";
 			});
 			
 			$jq(".btn-publish").click( function( event ) {
