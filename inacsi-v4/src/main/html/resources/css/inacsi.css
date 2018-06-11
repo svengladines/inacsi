@@ -17,8 +17,6 @@
   	background-color: #ffffff;
     font-family: "Montserrat";
     font-weight: normal;
-    font-size: 12px;
-	line-height: 18px;
     color: #555;
 
     -webkit-font-smoothing: antialiased;
@@ -40,21 +38,17 @@
 	/* border-bottom: 2px solid #d9d9d9; */
 }
 
-.navbar-inverse {
-	background: #425a6b;
-}
-
 .navbar-acsi {
 	margin-bottom: 0px;
+	border: none;
+	background-image: none;
+	background-color: rgba(255,255,255,255);
+	box-shadow: none;
 }
 
 .nav-list li a {
    border: 1px solid rgb(229, 229, 229);
    padding: 8px 10px;
-}
-
-.navbar-brand {
-	font-size: 32pt;
 }
 
 .nav-list .nav-header li {
@@ -95,6 +89,7 @@
 .showcases {
 	margin-bottom: 2em;
 	display: flex;
+  	flex-direction: row;
 }
 
 .showcases .showcase {
@@ -110,20 +105,44 @@
 }
 
 section {
-	/* border-bottom: 2px solid #d9d9d9; */
+	border-bottom: 2px solid #d9d9d9;
 	padding-bottom: 3em;
 }
 
 .section-header {
-	padding-top: 10px;
+	padding-top: 8px;
 	/* padding-bottom: 10px; */
 	text-align: center;
 	color: #3498db;
 }
 
+.article {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #e6e6e6;
+}
+
+.article-header {
+    padding: 6px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.article-body {
+    padding: 6px;
+}
+
+.west .article {
+    background-color: #ffffff;
+}
+
+.east .article {
+    background-color: #f9f9f9;
+}
+
+
 #footer {
 	color: white;
-	background-color: #3498db;
+	background-color: #222222;
 	padding-bottom: 35px;
 	width: 100%;
     padding-top: 1em;

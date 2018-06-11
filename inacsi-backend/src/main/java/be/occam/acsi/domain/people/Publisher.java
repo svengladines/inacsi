@@ -10,10 +10,10 @@ import be.occam.utils.one.OneDotComClient;
 public class Publisher {
 	
 	protected final Logger logger
-	= LoggerFactory.getLogger( this.getClass() );
+		= LoggerFactory.getLogger( this.getClass() );
 
 	@Resource
-	OneDotComClient oneDotComClient;
+	protected OneDotComClient oneDotComClient;
 
 	public void publish( String file, String content ) {
 	
