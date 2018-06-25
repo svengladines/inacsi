@@ -94,6 +94,7 @@ public class InAcsiApplicationConfig {
 			return new EntryService( acsiDigitaalEmailAddress, acsiEmailAddress );
 		}
 		
+		/*
 		@Bean
 		public PageService pageService( ) {
 			return new PageService(  );
@@ -103,6 +104,7 @@ public class InAcsiApplicationConfig {
 		public ArticleService articleService() {
 			return new ArticleService();
 		}
+		*/
 		
 	}
 	
@@ -114,22 +116,25 @@ public class InAcsiApplicationConfig {
 			return new MailMan();
 		}
 		
+		/*
 		@Bean
 		ArticleManager articleManager() {
 			return new ArticleManager();
 		}
-		
+		*/
 	}
 	
 	@Configuration
 	@Profile({ConfigurationProfiles.PRODUCTION, ConfigurationProfiles.DEV})
 	public static class DataConfig {
 		
+		/*
 		@Bean
 		@Lazy( false )
 		public ProductionData productionData() {
 			return new ProductionData();
 		}
+		*/
 		
 	}
 	

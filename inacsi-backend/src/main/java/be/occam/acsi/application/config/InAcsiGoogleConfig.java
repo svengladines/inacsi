@@ -40,7 +40,7 @@ public class InAcsiGoogleConfig {
 			factory.setPackagesToScan( JPA_PKG);
 			factory.setPersistenceProvider( persistenceProvider );
 			// factory.setDataSource(jpaDataSource);
-			factory.setPersistenceUnitName("vive-le-velo-repository");
+			factory.setPersistenceUnitName("inacsi-repository");
 			factory.getJpaPropertyMap().put( "datanucleus.jpa.addClassTransformer", "false" );
 			factory.getJpaPropertyMap().put( "datanucleus.appengine.datastoreEnableXGTransactions", "true" );
 			factory.getJpaPropertyMap().put( "datanucleus.metadata.allowXML", "false" );

@@ -52,6 +52,8 @@ public class MvcConfig {
 			
 		}
 		
+		/*
+		
 		@Bean
 		public PageController pageController() {
 			
@@ -72,6 +74,7 @@ public class MvcConfig {
 			return new ArticleController();
 			
 		}
+		*/
 		
 	}
 	

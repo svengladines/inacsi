@@ -2,7 +2,7 @@ package be.occam.acsi.domain.object;
 
 public enum Therapy {
 	
-	Individual, Relation, Family, Counseling, SOVAKid, SOVAAdult, Group, Fail;
+	Individual, Relation, Sex, Family, Counseling, SOVAKid, SOVAAdult, Group, Fail;
 	
 	public String getDescription() {
 		
@@ -16,6 +16,8 @@ public enum Therapy {
 			case Family: description = "Gezinstherapie";
 				break;
 			case Relation: description = "Relatietherapie";
+				break;
+			case Sex: description = "Sekstherapie";
 				break;
 			case SOVAKid: description = "SOVA Kinderen";
 				break;
