@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<title>ACSI webformulier</title>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	
+    <!-- Bootstrap core CSS -->
+    <link href="resources/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link href="resources/bootstrap-3.3.5/css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="resources/css/inacsi.css" rel="stylesheet">
+    
+    <!-- Awesome fonts -->
+    <link href="resources/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet">
+    
+    <!-- Other fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    
+    <!-- captcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+		
+	<script type="text/javascript" src="resources/javascript/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="resources/javascript/lodash-4.5.1.js"></script>
+    <script type="text/javascript" src="resources/javascript/moment.js"></script>
+    <script type="text/javascript" src="resources/javascript/templates.js"></script>
+    <script type="text/javascript" src="resources/bootstrap/js/bootstrap.js"></script>	
+    <script type="text/javascript" src="resources/javascript/inacsi.js"></script>	
+
+</head>
+
+<body>
+
+    <div class="navbar navbar navbar-acsi">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div>
+          		<img src="resources/images/logo.gif" title="ACSI" height="60"/>
+          </div>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html#welkom">WELKOM</a></li>
+            <li><a href="index.html#team">TEAM</a>
+            <li><a href="index.html#therapie">THERAPIE</a>
+          	<li><a href="index.html#afspraak">AFSPRAAK</a>
+            </li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+	<section id="entry-form">
+	
+		<div class="section-header south">
+	
+			<div class="container">
+	
+				<div class="row centered">
+				
+					<h4>Aanmelden</h4>
+					<p>
+						Vul het onderstaande formulier in om je interesse door te geven voor een therapie bij ACSI.
+					</p>
+				</div>
+			
+			</div>
+		
+		</div>
+		
+		<br/>
+	
+		<div class="container">
+		
+			<div class="row">
+			
+				<form id="entryForm" class="form-horizontal" role="form" method="post" enctype="application/x-www-form-urlencoded" accept-charset="utf-8">
+		
+				<p class="">
+					Velden met een (*) moet je zeker invullen.
+				</p>
+				
+				<h3>Gegevens</h3>
+				
+				<div class="form-group">
+					<label for="organisation-name" class="col-sm-4 control-label">Voornaam en familienaam (*)</label>
+					<div class="col-sm-3">	
+						<input name="name" type="text" class="form-control" required="required"></input>
+					</div>
+				</div>
+				<div class="form-group">
+						<label for="organisation-telefoon" class="col-sm-4 control-label">Telefoonnummer (*)</label>
+						<div class="col-sm-2">
+							<input name="telephone" type="tel" class="form-control" required="required"></input>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="organisation-email" class="col-sm-4 control-label">E-mail (*)</label>
+						<div class="col-sm-3">
+							<input name="email" type="email" class="form-control" required="required" value=""></input>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="organisation-email" class="col-sm-4 control-label">Geboortedatum (*)</label>
+					    <div class="col-xs-2">
+							<input id="birth-day" name="birthDay" type="text" value="" pattern="[0-9]*" maxlength="2" placeholder="Dag" class="form-control" autocomplete="on" required="required">
+						</div>
+				      <div class="col-xs-2">
+				        <select name="birthMonth" class="form-control">
+				          <option value="01" selected="selected">Januari</option>
+				          <option value="02">Februari</option>
+				          <option value="03">Maart</option>
+				          <option value="04">April</option>
+				          <option value="05">Mei</option>
+				          <option value="06">Juni</option>
+				          <option value="07">Juli</option>
+				          <option value="08">Augustus</option>
+				          <option value="09">September</option>
+				          <option value="10">Oktober</option>
+				          <option value="11">November</option>
+				          <option value="12">December</option>
+				        </select>
+				      </div>
+    				<div class="col-xs-2">
+      					<input name="birthYear" value="" type="text" pattern="[0-9]*" maxlength="4" placeholder="Jaar" class="form-control" required="required">
+    				</div>
+    				<div class="col-xs-2">
+    				</div>
+    				<div class="col-xs-offset-4 col-xs-8">
+    					<p>
+    						<small>Indien de aanvraag een kind betreft, gelieve zijn of haar geboortedatum in te geven.</small>
+    					</p>
+    				</div>
+  				</div>
+				
+				<h3>Aanvraag</h3>
+				
+				<div class="form-group">
+					<label for="organisation-name" class="col-sm-4 control-label">Gewenste therapie (*)</label>
+					<div class="col-sm-3">	
+						<select name="therapy" class="form-control">
+							<option value="Individual">Individuele therapie</option>
+							<option value="Relation">Relatietherapie</option>
+							<option value="Sex">Sekstherapie</option>
+							<option value="Family">Gezinstherapie</option>
+							<option value="Counseling">Ouderschapsbemiddeling</option>
+							<option value="Fail">Vorming/Workshop</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+						<label for="organisation-telefoon" class="col-sm-4 control-label">Onderwerp aanvraag (*)</label>
+						<div class="col-sm-8">
+							<input name="subject" type="text" class="form-control" required="required"></input>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="organisation-gsm" class="col-sm-4 control-label">Korte beschrijving problematiek (*)</label>
+						<div class="col-sm-8">
+							<textarea name="description" class="form-control" rows="10" cols="64" required="required"></textarea>
+						</div>
+				</div>
+
+				<h3>Beschikbaarheid</h3>
+				<div class="form-group">
+					<label for="availability" class="col-sm-4 control-label">Beschikbaarheid</label>
+					<div class="col-sm-8">
+						<p>Geef hier je beschikbaarheid aan. <br/>
+							Gelieve alle beschikbare momenten weer te geven en specifieer indien mogelijk het dagdeel dat je beschikbaar bent, bv. "zaterdagmorgen", "donderdagavond", ... . <br/>
+							We proberen deze in rekening te brengen als we afspraken plannen. 
+						</p>
+						<textarea name="availability" class="form-control" rows="10" cols="64"></textarea>
+					</div>
+				</div>
+				<!-- 
+				<div class="form-group">
+					<label class="col-sm-4 control-label"></label>
+					<div class="col-sm-8 g-recaptcha" data-sitekey="6Lc0uR8TAAAAAIrv71JquwH2HbhdAwB7v2Yevu8D">
+					</div>
+				</div>
+				 -->
+				<div class="form-group">
+					<label class="col-sm-4 control-label"></label>
+					<div class="col-sm-8">
+						<button type="submit" id="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Verstuur</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label"></label>
+					<div class="col-sm-8">
+						<div id="submitStatus" class="hidden"></div>
+					</div>
+				</div>
+				
+			</form>
+			
+			</div>
+			
+	</section>
+	
+	<section class="section-footer">
+		<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<h4>Groepspraktijk Nieuwrode</h4>
+				<p>
+					Dorp 13, bus 1<br/>
+					3221 Nieuwrode
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<h4>Praktijkruimte Linden</h4>
+				<p>
+					Houwaartstraat 114<br/>
+					3210 Linden
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<h4>Contacteer ons</h4>
+				<ul class="list-unstyled">
+					<li><i class="fa fa-phone"></i>&nbsp;&nbsp;<strong>016/43.55.71</strong></li>
+					<li><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;info@inacsi.be
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<span><i class="fa fa-copyright"></i>&nbsp; ACSI 2016</span>
+			</div>
+		</div>
+	</div>
+	</section>
+	
+	<script>
+	
+		var $jq = jQuery.noConflict();
+	
+		$jq(".toggle").click( function( event ) {
+			
+			$jq(this).parent().removeClass("show").addClass("hidden");
+			
+			var div = $jq(this).attr("data-show-div");
+			
+			$jq("#" + div ).removeClass("hidden").addClass("show");
+			
+		});
+		
+		var serialize = function( element ) {
+		    var o = {};
+		    var a = element.serializeArray();
+		    $jq.each(a, function() {
+		        if (o[this.name] !== undefined) {
+		            if (!o[this.name].push) {
+		                o[this.name] = [o[this.name]];
+		            }
+		            o[this.name].push(this.value || '');
+		        } else {
+		            o[this.name] = this.value || '';
+		        }
+		    });
+		    return o;
+		};
+		
+	$jq("#entryForm").submit( function( event ) {
+		
+		event.preventDefault();
+			
+		var type = "json";
+
+		var url = "http://inacsi-backend.appspot.com/api/entries";
+		// var url = "http://localhost:8068/api/entries";
+
+		var fdata = new FormData();
+
+		var json 
+			= JSON.stringify( serialize( $jq("#entryForm") ) );
+		
+		busyButton($jq("#submit"));
+
+		$jq.ajax({
+			type : "post",
+			url : url,
+			dataType : type,
+			contentType : "application/json",
+			processData : false,
+			data : json,
+			success : function( created ) {
+				success( $jq("#submit"), $jq("#submitStatus"), "Je aanvraag werd met succes verstuurd. U hoort snel iets van ons." );
+			},
+			error : function( response ) {
+				error($jq("#submit"), $jq("#submitStatus"), "Er trad een fout op. Probeer AUB opnieuw" );
+			}
+		});
+		
+	});
+		
+		
+		
+		
+		
+		
+	
+	</script>
+</html>

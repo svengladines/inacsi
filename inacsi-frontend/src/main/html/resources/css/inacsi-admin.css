@@ -1,0 +1,65 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#content { 
+    padding-bottom: 16em;
+    padding-top: 20px;
+}
+
+.article-edit {
+	
+	border: 1px solid rgb(229, 229, 229);
+	text-align: center;
+   
+}
+
+.article:hover {
+   border: 1px solid rgb(229, 229, 255);
+   background-color: #eeeeee;
+   cursor: crosshair;
+}
+
+.editable {
+	line-height: 1.3;
+	padding: 10px;
+	border: 1px solid rgba(255,255,155,0.0)	
+}
+
+.editable:hover {
+   border: 1px solid rgb(229, 229, 255);
+   background-color: #eeeeee;
+   cursor: crosshair;
+}
+
+.tiny {
+   border: 1px solid rgb(229, 229, 255);
+   background-color: #eeeeee;
+   padding: 10px;
+}
+
+.tiny > p {
+}
+
+.tiny:hover {
+   cursor: text;
+}
+
+.actions {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.relativ {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
