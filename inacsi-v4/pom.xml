@@ -37,7 +37,7 @@
 	    					<fromDir>src/main/html/</fromDir>
 	    					<toDir>/</toDir>
 	    					<includes>
-	    						**/*
+	    							**/*.html,**/*.css,**/*.js,**/*.pdf,**/*.jpg
 	    					</includes>
 	    					<url>ftp://ftp.inacsi.be</url>
 	    					<serverId>ftp-inacsi</serverId>
