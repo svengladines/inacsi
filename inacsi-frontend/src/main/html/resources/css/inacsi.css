@@ -88,8 +88,8 @@
 
 .showcases {
 	margin-bottom: 2em;
-	display: flex;
-  	flex-direction: row;
+	/*display: flex;
+  	flex-direction: row;*/
 }
 
 .showcases .showcase {
