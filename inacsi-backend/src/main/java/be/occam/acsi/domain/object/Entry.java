@@ -1,6 +1,9 @@
 package be.occam.acsi.domain.object;
 
+import static be.occam.utils.javax.Utils.list;
+
 import java.util.Date;
+import java.util.List;
 
 public class Entry {
 	
@@ -12,7 +15,12 @@ public class Entry {
 	Therapy therapy;
 	String subject;
 	String description;
-	String availability;
+	String availabilityComment;
+	List<String> availabilities;
+	
+	public Entry() {
+		this.availabilities = list();
+	}
 	
 	public String getName() {
 		return name;
@@ -62,12 +70,12 @@ public class Entry {
 		this.description = description;
 	}
 
-	public String getAvailability() {
-		return availability;
+	public String getAvailabilityComment() {
+		return availabilityComment;
 	}
 
-	public void setAvailability(String availability) {
-		this.availability = availability;
+	public void setAvailabilityComment(String availabilityComment) {
+		this.availabilityComment = availabilityComment;
 	}
 
 	public Date getBirthDay() {
@@ -77,5 +85,10 @@ public class Entry {
 	public void setBirthDay(Date birthDay) {
 		this.birthDay = birthDay;
 	}
+
+	public List<String> getAvailabilities() {
+		return availabilities;
+	}
+	
 	
 }

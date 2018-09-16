@@ -189,11 +189,52 @@
 				<div class="form-group">
 					<label for="availability" class="col-sm-4 control-label">Beschikbaarheid</label>
 					<div class="col-sm-8">
-						<p>Geef hier je beschikbaarheid aan. <br/>
-							Gelieve alle beschikbare momenten weer te geven en specifieer indien mogelijk het dagdeel dat je beschikbaar bent, bv. "zaterdagmorgen", "donderdagavond", ... . <br/>
+						<p>Geef hier je beschikbaarheid aan. Gelieve alle beschikbare momenten in te geven.<br/>
 							We proberen deze in rekening te brengen als we afspraken plannen. 
 						</p>
-						<textarea name="availability" class="form-control" rows="10" cols="64"></textarea>
+						<div class="availability-day">
+							<div>Maandag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="11">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="12">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="13">avond</div>
+						</div>
+						<div class="availability-day">
+							<div>Dinsdag</div>
+							<div class="availability-period availability-not-selected"  data-availability-id="21">voormiddag</div>
+							<div class="availability-period availability-not-selected"  data-availability-id="22">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="23">avond</div>
+						</div>
+						<div class="availability-day">
+							<div>Woensdag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="31">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="32">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="33">avond</div>
+						</div>
+						<div class="availability-day">
+							<div>Donderdag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="41">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="42">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="43">avond</div>
+						</div>
+						<div class="availability-day">
+							<div>Vrijdag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="51">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="52">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="53">avond</div>
+						</div>
+						<div class="availability-day">
+							<div>zaterdag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="61">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="62">namiddag</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="availabilityComment" class="col-sm-4 control-label">Opmerkingen</label>
+					<div class="col-sm-8">
+						<p>Geef hier eventuele opmerkingen bij de geselecteerde beschikbaarheid.<br/>
+						</p>
+						<textarea name="availabilityComment" class="form-control" rows="10" cols="64"></textarea>
 					</div>
 				</div>
 				<!-- 
@@ -203,6 +244,7 @@
 					</div>
 				</div>
 				 -->
+				 <h3>Privacy</h3>
 				<div class="form-group">
 					<label class="col-sm-4 control-label">Verwerking gegevens (*)</label>
 					<div class="col-sm-8">
@@ -265,6 +307,22 @@
 	<script>
 	
 		var $jq = jQuery.noConflict();
+		
+		var clickToMakeUnavailable = function( element ) {
+			element.click( function( event ) {
+				$jq(this).removeClass("availability-selected").addClass( "availability-not-selected" );
+				clickToMakeAvailable( $jq(this) );
+			});	
+		}
+		
+		var clickToMakeAvailable = function( element ) {
+			element.click( function( event ) {
+				$jq(this).removeClass("availability-not-selected").addClass( "availability-selected" );
+				clickToMakeUnavailable( $jq(this) );
+			});	
+		}
+		
+		clickToMakeAvailable( $jq(".availability-not-selected") );
 	
 		$jq(".toggle").click( function( event ) {
 			
@@ -292,19 +350,36 @@
 		    return o;
 		};
 		
+		var serializeAvailability = function( elements ) {
+		    var o = new Array();
+		    $jq.each(elements, function() {
+		       	o.push( $jq(this).attr("data-availability-id") );
+		    });
+		    return o;
+		};
+		
 	$jq("#entryForm").submit( function( event ) {
 		
 		event.preventDefault();
 			
 		var type = "json";
 
-		var url = "http://inacsi-backend.appspot.com/api/entries";
-		// var url = "http://localhost:8068/api/entries";
+		// var url = "http://inacsi-backend.appspot.com/api/entries";
+		var url = "http://localhost:8099/api/entries";
 
-		var fdata = new FormData();
+		var fdata 
+			= new FormData();
+	
+		var serializedForm
+			= serialize( $jq("#entryForm") )
+			
+		var serializedAvailability
+			= serializeAvailability( $jq(".availability-selected") );
+		
+		serializedForm["availabilities"] = serializedAvailability;
 
 		var json 
-			= JSON.stringify( serialize( $jq("#entryForm") ) );
+			= JSON.stringify( serializedForm );
 		
 		busyButton($jq("#submit"));
 

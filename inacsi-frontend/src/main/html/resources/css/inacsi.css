@@ -760,3 +760,21 @@ a:after {
 	bottom: 20px;
 	right: 20px;
 }
+
+.availability-day {
+	display: flex;
+	align-items: center;
+}
+
+.availability-period {
+	height: 3em;
+	background-color: #eeeeee;
+	margin: 1em;
+	padding: 1em;
+	border: 1px solid gray;
+	cursor: pointer;
+}
+
+.availability-selected {
+	background-color: #eeffee;
+}
