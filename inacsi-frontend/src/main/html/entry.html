@@ -161,8 +161,8 @@
 				
 				<div class="form-group">
 					<label for="organisation-name" class="col-sm-4 control-label">Gewenste therapie (*)</label>
-					<div class="col-sm-3">	
-						<select name="therapy" class="form-control">
+					<div class="col-md-8">	
+						<select id="therapy" name="therapy" class="form-control select-no-full-width">
 							<option value="Individual">Individuele therapie</option>
 							<option value="Relation">Relatietherapie</option>
 							<option value="Sex">Sekstherapie</option>
@@ -170,6 +170,8 @@
 							<option value="Counseling">Ouderschapsbemiddeling</option>
 							<option value="Fail">Vorming/Workshop</option>
 						</select>
+						<br/>
+						<span id="counseling-warning" class="text-info hidden">De sessies rond ouderschapsbemiddeling gaan steeds door bij Sabine, in onze praktijk in Linden.</span>
 					</div>
 				</div>
 				<div class="form-group">
@@ -184,48 +186,69 @@
 							<textarea name="description" class="form-control" rows="10" cols="64" required="required"></textarea>
 						</div>
 				</div>
+				<div class="form-group">
+						<label for="organisation-gsm" class="col-sm-4 control-label">Therapeut</label>
+						<div class="col-sm-8">
+							<p>Indien je een expliciete voorkeur hebt voor een therapeut, selecteer deze dan hier.<br/>
+							<span class="text-info">Opgelet: het aanduiden van een voorkeur doet vermoedelijk de wachttijd langer worden.</span> 
+							</p>
+							<select id="therapist" name="therapist" class="form-control select-no-full-width">
+							<option value="none" selected="selected">Geen voorkeur</option>
+							<option value="belmans">Katrien Belmans</option>
+							<option value="melotte">Katrien Melotte</option>
+							<option value="poel">Sabine Poel</option>
+							<option value="vanhie">Thijs Vanhie</option>
+							<option value="vannooten">Ellen Van Nooten</option>
+							<option value="verbiest">Siel Verbiest</option>
+							<option value="verbruggen">Hanne Verbruggen</option>
+							<option value="vuerinckx">Katrien Vuerinckx</option>
+						</select>
+						</div>
+				</div>
 
 				<h3>Beschikbaarheid</h3>
 				<div class="form-group">
-					<label for="availability" class="col-sm-4 control-label">Beschikbaarheid</label>
+					<label for="availability" class="col-sm-4 control-label">Beschikbaarheid (*)</label>
 					<div class="col-sm-8">
 						<p>Geef hier je beschikbaarheid aan. Gelieve alle beschikbare momenten in te geven.<br/>
-							We proberen deze in rekening te brengen als we afspraken plannen. 
+							We proberen deze in rekening te brengen als we afspraken plannen. <br/>
+							<span class="text-info">Hoe meer momenten je selecteert, hoe korter de wachttijd.</span> 
 						</p>
 						<div class="availability-day">
-							<div>Maandag</div>
+							<div class="availability-day-day">Maandag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="11">voormiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="12">namiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="13">avond</div>
 						</div>
 						<div class="availability-day">
-							<div>Dinsdag</div>
+							<div class="availability-day-day">Dinsdag</div>
 							<div class="availability-period availability-not-selected"  data-availability-id="21">voormiddag</div>
 							<div class="availability-period availability-not-selected"  data-availability-id="22">namiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="23">avond</div>
 						</div>
 						<div class="availability-day">
-							<div>Woensdag</div>
+							<div class="availability-day-day">Woensdag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="31">voormiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="32">namiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="33">avond</div>
 						</div>
 						<div class="availability-day">
-							<div>Donderdag</div>
+							<div class="availability-day-day">Donderdag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="41">voormiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="42">namiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="43">avond</div>
 						</div>
 						<div class="availability-day">
-							<div>Vrijdag</div>
+							<div class="availability-day-day">Vrijdag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="51">voormiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="52">namiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="53">avond</div>
 						</div>
 						<div class="availability-day">
-							<div>zaterdag</div>
+							<div class="availability-day-day">zaterdag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="61">voormiddag</div>
 							<div class="availability-period availability-not-selected" data-availability-id="62">namiddag</div>
+							<div class="availability-day-day"></div>
 						</div>
 					</div>
 				</div>
@@ -357,6 +380,17 @@
 		    });
 		    return o;
 		};
+		
+		$jq("#therapy").change( function( event ) {
+			
+			if ( $jq(this).val() == "Counseling" ) {
+				$jq( "#counseling-warning" ).removeClass("hidden");
+			}
+			else {
+				$jq( "#counseling-warning" ).addClass("hidden");
+			}
+			
+		});
 		
 	$jq("#entryForm").submit( function( event ) {
 		

@@ -766,9 +766,15 @@ a:after {
 	align-items: center;
 }
 
+.availability-day-day {
+	width: 25%;
+	margin: 1em;
+}
+
 .availability-period {
 	height: 3em;
 	background-color: #eeeeee;
+	width: 25%;
 	margin: 1em;
 	padding: 1em;
 	border: 1px solid gray;
@@ -777,4 +783,8 @@ a:after {
 
 .availability-selected {
 	background-color: #eeffee;
+}
+
+.select-no-full-width {
+	width: auto;
 }
