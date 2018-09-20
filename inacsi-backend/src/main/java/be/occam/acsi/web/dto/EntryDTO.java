@@ -22,6 +22,7 @@ public class EntryDTO {
 	String description;
 	String availabilityComment;
 	String[] availabilities;
+	String preferredTherapist;
 	
 	public String getName() {
 		return name;
@@ -109,6 +110,14 @@ public class EntryDTO {
 
 	public void setBirthYear(String birthYear) {
 		this.birthYear = birthYear;
+	}
+	
+	public String getPreferredTherapist() {
+		return preferredTherapist;
+	}
+
+	public void setPreferredTherapist(String preferredTherapist) {
+		this.preferredTherapist = preferredTherapist;
 	}
 
 	public static Entry toEntry( EntryDTO dto ) {

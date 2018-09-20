@@ -17,6 +17,7 @@ public class Entry {
 	String description;
 	String availabilityComment;
 	List<String> availabilities;
+	Therapist preferredTherapist;
 	
 	public Entry() {
 		this.availabilities = list();
@@ -88,6 +89,14 @@ public class Entry {
 
 	public List<String> getAvailabilities() {
 		return availabilities;
+	}
+
+	public Therapist getPreferredTherapist() {
+		return preferredTherapist;
+	}
+
+	public void setPreferredTherapist(Therapist preferredTherapist) {
+		this.preferredTherapist = preferredTherapist;
 	}
 	
 	

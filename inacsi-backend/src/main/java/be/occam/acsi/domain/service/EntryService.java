@@ -1,6 +1,6 @@
 package be.occam.acsi.domain.service;
 
-import static be.occam.utils.javax.Utils.*;
+import static be.occam.utils.javax.Utils.list;
 import static be.occam.utils.spring.web.Controller.response;
 
 import java.io.InputStream;
@@ -9,7 +9,6 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
@@ -23,6 +22,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 
 import be.occam.acsi.domain.object.Entry;
 import be.occam.acsi.domain.people.MailMan;
+import be.occam.acsi.domain.people.Secretary;
 import be.occam.acsi.web.dto.EntryDTO;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -44,6 +44,9 @@ public class EntryService {
 	@Resource
 	protected MailMan mailMan;
 	
+	@Resource
+	protected Secretary secretary;
+	
 	protected final String fromEmailAddress;
 	protected final String toEmailAddress;
 	
@@ -62,6 +65,7 @@ public class EntryService {
 			= EntryDTO.toEntry( entryDTO );
 		
 		entry.getAvailabilities().addAll( this.translatedAvailabilities( entryDTO.getAvailabilities() ) );
+		entry.setPreferredTherapist( this.secretary.whoHasCode( entryDTO.getPreferredTherapist() ) );
 		
 		MimeMessage message
 			= this.formatEntryReceivedMessage( entry, this.toEmailAddress );
