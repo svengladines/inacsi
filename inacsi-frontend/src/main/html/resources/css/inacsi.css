@@ -1,3 +1,4 @@
+
 /*
  * Thanks to Author: Carlos Alvarez
  * URL: http://alvarez.is
@@ -88,8 +89,8 @@
 
 .showcases {
 	margin-bottom: 2em;
-	display: flex;
-  	flex-direction: row;
+	/*display: flex;
+  	flex-direction: row;*/
 }
 
 .showcases .showcase {
@@ -98,6 +99,9 @@
 	padding: 25px; 75px;
 	border: 1px solid #e6e6e6;
 	height: 100%;
+}
+
+.showcase-header {
 }
 
 #kijker {
@@ -759,4 +763,32 @@ a:after {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
+}
+
+.availability-day {
+	display: flex;
+	align-items: center;
+}
+
+.availability-day-day {
+	width: 25%;
+	margin: 1em;
+}
+
+.availability-period {
+	height: 3em;
+	background-color: #eeeeee;
+	width: 25%;
+	margin: 1em;
+	padding: 1em;
+	border: 1px solid gray;
+	cursor: pointer;
+}
+
+.availability-selected {
+	background-color: #eeffee;
+}
+
+.select-no-full-width {
+	width: auto;
 }

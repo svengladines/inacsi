@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -28,16 +29,14 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     
-    <!-- captcha -->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-		
+
+	<script type="text/javascript" src="resources/bootstrap-3.3.5/js/bootstrap.js"></script>		
 	<script type="text/javascript" src="resources/javascript/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="resources/javascript/lodash-4.5.1.js"></script>
     <script type="text/javascript" src="resources/javascript/moment.js"></script>
@@ -161,8 +160,8 @@
 				
 				<div class="form-group">
 					<label for="organisation-name" class="col-sm-4 control-label">Gewenste therapie (*)</label>
-					<div class="col-sm-3">	
-						<select name="therapy" class="form-control">
+					<div class="col-md-8">	
+						<select id="therapy" name="therapy" class="form-control select-no-full-width">
 							<option value="Individual">Individuele therapie</option>
 							<option value="Relation">Relatietherapie</option>
 							<option value="Sex">Sekstherapie</option>
@@ -170,6 +169,8 @@
 							<option value="Counseling">Ouderschapsbemiddeling</option>
 							<option value="Fail">Vorming/Workshop</option>
 						</select>
+						<br/>
+						<span id="counseling-warning" class="text-info hidden">De sessies rond ouderschapsbemiddeling gaan steeds door bij Sabine, in onze praktijk in Linden.</span>
 					</div>
 				</div>
 				<div class="form-group">
@@ -184,16 +185,78 @@
 							<textarea name="description" class="form-control" rows="10" cols="64" required="required"></textarea>
 						</div>
 				</div>
+				<div class="form-group">
+						<label for="organisation-gsm" class="col-sm-4 control-label">Therapeut</label>
+						<div class="col-sm-8">
+							<p>Indien je een expliciete voorkeur hebt voor een therapeut, selecteer deze dan hieronder.<br/>
+							<span class="text-info">Opgelet: het aanduiden van een voorkeur doet vermoedelijk de wachttijd langer worden.</span> 
+							</p>
+							<select id="therapist" name="preferredTherapist" class="form-control select-no-full-width">
+							<option value="none" selected="selected">Geen voorkeur</option>
+							<option value="belmans">Katrien Belmans</option>
+							<option value="melotte">Katrien Melotte</option>
+							<option value="poel">Sabine Poel</option>
+							<option value="vanhie">Thijs Vanhie</option>
+							<option value="vannooten">Ellen Van Nooten</option>
+							<option value="verbiest">Siel Verbiest</option>
+							<option value="verbruggen">Hanne Verbruggen</option>
+							<option value="vuerinckx">Katrien Vuerinckx</option>
+						</select>
+						</div>
+				</div>
 
 				<h3>Beschikbaarheid</h3>
 				<div class="form-group">
-					<label for="availability" class="col-sm-4 control-label">Beschikbaarheid</label>
+					<label for="availability" class="col-sm-4 control-label">Beschikbaarheid (*)</label>
 					<div class="col-sm-8">
-						<p>Geef hier je beschikbaarheid aan. <br/>
-							Gelieve alle beschikbare momenten weer te geven en specifieer indien mogelijk het dagdeel dat je beschikbaar bent, bv. "zaterdagmorgen", "donderdagavond", ... . <br/>
-							We proberen deze in rekening te brengen als we afspraken plannen. 
+						<p>Geef hier je beschikbaarheid aan. Gelieve alle beschikbare momenten in te geven.<br/>
+							We proberen deze in rekening te brengen als we afspraken plannen. <br/>
+							<span class="text-info">Hoe meer momenten je selecteert, hoe korter de wachttijd.</span> 
 						</p>
-						<textarea name="availability" class="form-control" rows="10" cols="64"></textarea>
+						<div class="availability-day">
+							<div class="availability-day-day">Maandag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="11">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="12">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="13">avond</div>
+						</div>
+						<div class="availability-day">
+							<div class="availability-day-day">Dinsdag</div>
+							<div class="availability-period availability-not-selected"  data-availability-id="21">voormiddag</div>
+							<div class="availability-period availability-not-selected"  data-availability-id="22">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="23">avond</div>
+						</div>
+						<div class="availability-day">
+							<div class="availability-day-day">Woensdag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="31">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="32">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="33">avond</div>
+						</div>
+						<div class="availability-day">
+							<div class="availability-day-day">Donderdag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="41">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="42">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="43">avond</div>
+						</div>
+						<div class="availability-day">
+							<div class="availability-day-day">Vrijdag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="51">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="52">namiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="53">avond</div>
+						</div>
+						<div class="availability-day">
+							<div class="availability-day-day">zaterdag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="61">voormiddag</div>
+							<div class="availability-period availability-not-selected" data-availability-id="62">namiddag</div>
+							<div class="availability-day-day"></div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="availabilityComment" class="col-sm-4 control-label">Opmerkingen</label>
+					<div class="col-sm-8">
+						<p>Geef hier eventuele opmerkingen bij de geselecteerde beschikbaarheid.<br/>
+						</p>
+						<textarea name="availabilityComment" class="form-control" rows="10" cols="64"></textarea>
 					</div>
 				</div>
 				<!-- 
@@ -203,6 +266,14 @@
 					</div>
 				</div>
 				 -->
+				 <h3>Privacy</h3>
+				<div class="form-group">
+					<label class="col-sm-4 control-label">Verwerking gegevens (*)</label>
+					<div class="col-sm-8">
+						<input type="checkbox" required="required">&nbsp;Ik ben akkoord dat ACSI de gegevens van dit formulier verwerkt zoals aangegeven in de <a href="resources/files/privacy.pdf">privacy disclaimer</a>.
+					</div>
+				</div>
+				 
 				<div class="form-group">
 					<label class="col-sm-4 control-label"></label>
 					<div class="col-sm-8">
@@ -249,7 +320,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<span><i class="fa fa-copyright"></i>&nbsp; ACSI 2016</span>
+				<span><i class="fa fa-copyright"></i>&nbsp; ACSI 2018</span>
 			</div>
 		</div>
 	</div>
@@ -258,6 +329,22 @@
 	<script>
 	
 		var $jq = jQuery.noConflict();
+		
+		var clickToMakeUnavailable = function( element ) {
+			element.click( function( event ) {
+				$jq(this).removeClass("availability-selected").addClass( "availability-not-selected" );
+				clickToMakeAvailable( $jq(this) );
+			});	
+		}
+		
+		var clickToMakeAvailable = function( element ) {
+			element.click( function( event ) {
+				$jq(this).removeClass("availability-not-selected").addClass( "availability-selected" );
+				clickToMakeUnavailable( $jq(this) );
+			});	
+		}
+		
+		clickToMakeAvailable( $jq(".availability-not-selected") );
 	
 		$jq(".toggle").click( function( event ) {
 			
@@ -285,6 +372,25 @@
 		    return o;
 		};
 		
+		var serializeAvailability = function( elements ) {
+		    var o = new Array();
+		    $jq.each(elements, function() {
+		       	o.push( $jq(this).attr("data-availability-id") );
+		    });
+		    return o;
+		};
+		
+		$jq("#therapy").change( function( event ) {
+			
+			if ( $jq(this).val() == "Counseling" ) {
+				$jq( "#counseling-warning" ).removeClass("hidden");
+			}
+			else {
+				$jq( "#counseling-warning" ).addClass("hidden");
+			}
+			
+		});
+		
 	$jq("#entryForm").submit( function( event ) {
 		
 		event.preventDefault();
@@ -292,12 +398,21 @@
 		var type = "json";
 
 		var url = "http://inacsi-backend.appspot.com/api/entries";
-		// var url = "http://localhost:8068/api/entries";
+		// var url = "http://localhost:8099/api/entries";
 
-		var fdata = new FormData();
+		var fdata 
+			= new FormData();
+	
+		var serializedForm
+			= serialize( $jq("#entryForm") )
+			
+		var serializedAvailability
+			= serializeAvailability( $jq(".availability-selected") );
+		
+		serializedForm["availabilities"] = serializedAvailability;
 
 		var json 
-			= JSON.stringify( serialize( $jq("#entryForm") ) );
+			= JSON.stringify( serializedForm );
 		
 		busyButton($jq("#submit"));
 
@@ -317,12 +432,6 @@
 		});
 		
 	});
-		
-		
-		
-		
-		
-		
 	
 	</script>
 </html>
