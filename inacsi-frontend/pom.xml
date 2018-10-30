@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   	<modelVersion>4.0.0</modelVersion>
-	
  	<groupId>be.occam.inacsi</groupId>
  	<artifactId>inacsi-frontend</artifactId>
   	<version>1.0-LATEST-SNAPSHOT</version>
@@ -12,8 +11,28 @@
 		<groupId>be.occam.colloseum</groupId>
 		<version>1.0-LATEST-SNAPSHOT</version>
 	</parent>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/html</directory>
+				<includes>
+					<include>*</include>
+				</includes>
+        		<filtering>true</filtering>
+      		</resource>
+      		<resource>
+				<directory>src/main/html/resources</directory>
+				<includes>
+					<include>**/**</include>
+				</includes>
+        		<filtering>false</filtering>
+        		<targetPath>resources</targetPath>
+      		</resource>
+		</resources>
 		 <extensions>
       		<extension>
     			<groupId>org.apache.maven.wagon</groupId>
@@ -34,7 +53,7 @@
 	    					<goal>upload</goal>
 	    				</goals>
 	    				<configuration>
-	    					<fromDir>src/main/html/</fromDir>
+	    					<fromDir>${project.build.outputDirectory}</fromDir>
 	    					<toDir>${occam.context}</toDir>
 	    					<includes>
 	    							*.html,resources/css/*.css,resources/javascript/*.js,resources/files/*.pdf,resources/images/**,resources/bootstrap-3.3.5/**,resources/font-awesome-4.5.0/**
