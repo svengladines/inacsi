@@ -12,7 +12,7 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 public class RunInAcsiBackend_Development extends JTest {
 	
 	public RunInAcsiBackend_Development() {
-		super( "/", 8099, ConfigurationProfiles.DEV );
+		super( "/", 9001, ConfigurationProfiles.DEV );
 	}
 	
 	@Test
