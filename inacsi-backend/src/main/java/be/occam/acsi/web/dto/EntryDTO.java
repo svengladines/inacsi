@@ -1,6 +1,8 @@
 package be.occam.acsi.web.dto;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 import be.occam.acsi.domain.object.Entry;
 import be.occam.acsi.domain.object.Therapy;
@@ -18,7 +20,9 @@ public class EntryDTO {
 	Therapy therapy;
 	String subject;
 	String description;
-	String availability;
+	String availabilityComment;
+	String[] availabilities;
+	String preferredTherapist;
 	
 	public String getName() {
 		return name;
@@ -68,14 +72,22 @@ public class EntryDTO {
 		this.description = description;
 	}
 	
-	public String getAvailability() {
-		return availability;
+	public String getAvailabilityComment() {
+		return availabilityComment;
 	}
 
-	public void setAvailability(String availability) {
-		this.availability = availability;
+	public void setAvailabilityComment(String availabilityComment) {
+		this.availabilityComment = availabilityComment;
 	}
-	
+
+	public String[] getAvailabilities() {
+		return availabilities;
+	}
+
+	public void setAvailabilities(String[] availabilities) {
+		this.availabilities = availabilities;
+	}
+
 	public String getBirthDay() {
 		return birthDay;
 	}
@@ -99,6 +111,14 @@ public class EntryDTO {
 	public void setBirthYear(String birthYear) {
 		this.birthYear = birthYear;
 	}
+	
+	public String getPreferredTherapist() {
+		return preferredTherapist;
+	}
+
+	public void setPreferredTherapist(String preferredTherapist) {
+		this.preferredTherapist = preferredTherapist;
+	}
 
 	public static Entry toEntry( EntryDTO dto ) {
 		
@@ -116,7 +136,7 @@ public class EntryDTO {
 		entry.setTherapy( dto.getTherapy() );
 		entry.setSubject( dto.getSubject() );
 		entry.setDescription( dto.getDescription() );
-		entry.setAvailability( dto.getAvailability() );
+		entry.setAvailabilityComment( dto.getAvailabilityComment() );
 		
 		return entry;
 		
@@ -133,7 +153,7 @@ public class EntryDTO {
 				this.therapy.name(),
 				this.subject,
 				this.description,
-				this.availability );
+				this.availabilityComment );
 		
 	}
 

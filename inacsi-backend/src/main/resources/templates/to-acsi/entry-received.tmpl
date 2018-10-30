@@ -26,10 +26,23 @@ ${entry.name} meldde zich zonet aan via het webformulier.
 <p>
    ${entry.description}
 </p>
+<#if entry.preferredTherapist??>
+	<h3>Voorkeur therapeut</h3>
+	<p>${entry.preferredTherapist.givenName}&nbsp;${entry.preferredTherapist.familyName}</p>
+</#if>
 
 <h2>Beschikbaarheid</h2>
+<h3>Geselecteerde beschikbaarheid</h3>
+<ul>
+	<#list entry.availabilities as availability>
+  		<li>${availability}</li>
+	</#list>
+</ul>
+
+
+<h3>Opmerkingen bij beschikbaarheid</h3>
 <p>
-   ${entry.availability}
+   ${entry.availabilityComment}
 </p>
 
 <br/>

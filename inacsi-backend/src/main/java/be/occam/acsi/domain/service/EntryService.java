@@ -1,11 +1,13 @@
 package be.occam.acsi.domain.service;
 
+import static be.occam.utils.javax.Utils.list;
 import static be.occam.utils.spring.web.Controller.response;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -20,6 +22,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 
 import be.occam.acsi.domain.object.Entry;
 import be.occam.acsi.domain.people.MailMan;
+import be.occam.acsi.domain.people.Secretary;
 import be.occam.acsi.web.dto.EntryDTO;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -29,11 +32,20 @@ public class EntryService {
 	protected final Logger logger
 		= LoggerFactory.getLogger( this.getClass() );
 	
+	protected final String[] days
+		= new String [] { "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag" };
+	
+	protected final String[] dayParts
+		= new String [] { "voormiddag", "namiddag", "avond" };
+	
 	@Resource
 	protected JavaMailSender javaMailSender;
 	
 	@Resource
 	protected MailMan mailMan;
+	
+	@Resource
+	protected Secretary secretary;
 	
 	protected final String fromEmailAddress;
 	protected final String toEmailAddress;
@@ -52,6 +64,9 @@ public class EntryService {
 		Entry entry
 			= EntryDTO.toEntry( entryDTO );
 		
+		entry.getAvailabilities().addAll( this.translatedAvailabilities( entryDTO.getAvailabilities() ) );
+		entry.setPreferredTherapist( this.secretary.whoHasCode( entryDTO.getPreferredTherapist() ) );
+		
 		MimeMessage message
 			= this.formatEntryReceivedMessage( entry, this.toEmailAddress );
 		
@@ -64,6 +79,33 @@ public class EntryService {
 		
 		return response( entryDTO, HttpStatus.CREATED );
 			
+	}
+	
+	protected List<String> translatedAvailabilities( String[] inSet ) {
+		
+		List<String> translated
+			= list();
+	
+		for ( String in : inSet ) {
+			
+			StringBuilder b
+				= new StringBuilder();
+			
+			Integer dayIndex 
+				= Integer.valueOf( in.substring( 0, 1 ) ) -1 ;
+			
+			b.append( days[ dayIndex ] );
+			
+			Integer dayPartIndex 
+				= Integer.valueOf( in.substring( 1, 2 ) ) -1 ;
+		
+			b.append( dayParts[ dayPartIndex ] );
+			
+			translated.add( b.toString() );
+			
+		}
+		
+		return translated;
 	}
 	
 	protected MimeMessage formatEntryReceivedMessage( Entry entry, String... recipients ) {
