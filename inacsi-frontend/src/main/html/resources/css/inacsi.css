@@ -792,3 +792,11 @@ a:after {
 .select-no-full-width {
 	width: auto;
 }
+
+.no-bullets {
+	list-style-type: none;
+}
+
+.article-body > div {
+    padding: 6px;
+}
