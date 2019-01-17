@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import be.occam.acsi.web.dto.EntryDTO;
 
 @Controller
 @RequestMapping(value="/entries")
+@CrossOrigin(origins = "http://www.inacsi.be")
 public class EntriesController {
 	
 	private final Logger logger 
@@ -50,10 +52,6 @@ public class EntriesController {
 		HttpHeaders httpHeaders
 			= new HttpHeaders();
 
-		httpHeaders.add("Access-Control-Allow-Origin", "*" ) ;
-		httpHeaders.add("Access-Control-Allow-Methods", "GET,OPTIONS" );
-		httpHeaders.add("Access-Control-Allow-Credentials","true");
-		
 		this.entryService.accept( entryDTO );
 
 		ResponseEntity<EntryDTO> response
@@ -62,29 +60,7 @@ public class EntriesController {
 
 		return response;
 
-}
-
-	@RequestMapping( value="/**", method = { RequestMethod.OPTIONS } )
-	@ResponseBody
-	public ResponseEntity<String> options() {
-
-		logger.info( "options!" );
-	
-		HttpHeaders httpHeaders
-			= new HttpHeaders();
-		
-		httpHeaders.add("Access-Control-Allow-Origin", "*" ) ;
-		httpHeaders.add("Access-Control-Allow-Methods", "GET,OPTIONS,POST" );
-		httpHeaders.add("Access-Control-Allow-Credentials","true");
-		httpHeaders.add("Access-Control-Allow-Headers","Content-Type");
-		
-		ResponseEntity<String> response;
-		
-		response = new ResponseEntity<String>( "okelidokeli", httpHeaders, HttpStatus.OK );
-		
-		return response;
 	}
-
 
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<String> handleServiceException(IllegalArgumentException e, WebRequest webRequest ) {

@@ -8,10 +8,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import be.occam.acsi.web.controller.ArticleController;
-import be.occam.acsi.web.controller.ArticlesController;
 import be.occam.acsi.web.controller.EntriesController;
-import be.occam.acsi.web.controller.PageController;
 
 @Configuration
 @EnableWebMvc
