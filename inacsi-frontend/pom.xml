@@ -58,7 +58,7 @@
 	    					<includes>
 	    							*.html,resources/css/*.css,resources/javascript/*.js,resources/files/*.pdf,resources/images/**,resources/bootstrap-3.3.5/**,resources/font-awesome-4.5.0/**
 	    					</includes>
-	    					<url>ftp://ftp.inacsi.be</url>
+	    					<url>ftp://ftp.groepspraktijkacsi.be</url>
 	    					<serverId>ftp-inacsi</serverId>
 	    				</configuration>
 	    			</execution>

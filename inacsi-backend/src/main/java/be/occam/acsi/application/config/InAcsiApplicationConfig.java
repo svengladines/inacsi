@@ -50,7 +50,7 @@ public class InAcsiApplicationConfig {
 		@Bean
 		String acsiEmailAddress() {
 			
-			return "info@inacsi.be"; 
+			return "info@groepspraktijkacsi.be"; 
 			
 		}
 		

@@ -11,6 +11,7 @@ public class Entry {
 	String telephone;
 	String email;
 	Date birthDay;
+	String healthCare;
 	
 	Therapy therapy;
 	String subject;
@@ -98,6 +99,13 @@ public class Entry {
 	public void setPreferredTherapist(Therapist preferredTherapist) {
 		this.preferredTherapist = preferredTherapist;
 	}
-	
+
+	public String getHealthCare() {
+		return healthCare;
+	}
+
+	public void setHealthCare(String healthCare) {
+		this.healthCare = healthCare;
+	}
 	
 }

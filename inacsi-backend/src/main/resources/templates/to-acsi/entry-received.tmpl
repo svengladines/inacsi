@@ -8,12 +8,15 @@ ${entry.name} meldde zich zonet aan via het webformulier.
 
 <h2>Algemene gegevens</h2>
 <p>
-	<ul>
-		<li>Naam: ${entry.name}</li>
-		<li>E-mail: ${entry.email}</li>
-		<li>Telefoon: ${entry.telephone}</li>
-		<li>Geboortedatum: ${entry.birthDay?date}</li>
-	</ul>
+	<div>
+		Naam: ${entry.name}<br/>
+		E-mail: ${entry.email}<br/>
+		Telefoon: ${entry.telephone}<br/>
+		Geboortedatum: ${entry.birthDay?string["dd/MM/yyyy"]}<br/>
+		<#if entry.healthCare??>
+		Ziekenfonds: ${entry.healthCare}<br/>
+		</#if>
+	</div>
 </p>
 
 <h2>Therapie</h2>

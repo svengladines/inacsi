@@ -6,7 +6,6 @@ import javax.persistence.spi.PersistenceProvider;
 import org.datanucleus.api.jpa.PersistenceProviderImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -14,13 +13,12 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import be.occam.acsi.jtest.DevData;
+import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
+import com.google.apphosting.api.ApiProxy;
+
 import be.occam.acsi.web.util.DataGuard;
 import be.occam.acsi.web.util.DevGuard;
 import be.occam.utils.spring.configuration.ConfigurationProfiles;
-
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
-import com.google.apphosting.api.ApiProxy;
 
 @Configuration
 public class InAcsiApplicationConfigForDev {
@@ -99,12 +97,6 @@ public class InAcsiApplicationConfigForDev {
 			
 			return new DevGuard( ApiProxy.getCurrentEnvironment() );
 			
-		}
-		
-		@Bean
-		@Lazy(false)
-		DevData devData() {
-			return new DevData();
 		}
 		
 	}

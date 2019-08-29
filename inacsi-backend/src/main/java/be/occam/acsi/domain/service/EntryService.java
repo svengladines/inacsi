@@ -24,6 +24,7 @@ import be.occam.acsi.domain.object.Entry;
 import be.occam.acsi.domain.people.MailMan;
 import be.occam.acsi.domain.people.Secretary;
 import be.occam.acsi.web.dto.EntryDTO;
+import be.occam.utils.timing.Timing;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
@@ -170,6 +171,7 @@ public class EntryService {
 			
 		Configuration cfg 
 			= new Configuration();
+		cfg.setTimeZone(Timing.timeZone);
 		
 		String templateID
 			= "/templates/to-sven/entry-received.tmpl";

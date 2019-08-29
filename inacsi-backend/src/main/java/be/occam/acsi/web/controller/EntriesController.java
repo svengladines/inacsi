@@ -24,7 +24,7 @@ import be.occam.acsi.web.dto.EntryDTO;
 
 @Controller
 @RequestMapping(value="/entries")
-@CrossOrigin(origins = "http://www.inacsi.be")
+@CrossOrigin(origins = {"http://www.inacsi.be","https://www.inacsi.be","http://www.groepspraktijkacsi.be","https://www.groepspraktijkacsi.be"})
 public class EntriesController {
 	
 	private final Logger logger 

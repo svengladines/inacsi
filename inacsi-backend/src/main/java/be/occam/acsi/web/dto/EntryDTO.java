@@ -16,6 +16,7 @@ public class EntryDTO {
 	String birthDay;
 	String birthMonth;
 	String birthYear;
+	String healthCare;
 	
 	Therapy therapy;
 	String subject;
@@ -119,6 +120,14 @@ public class EntryDTO {
 	public void setPreferredTherapist(String preferredTherapist) {
 		this.preferredTherapist = preferredTherapist;
 	}
+	
+	public String getHealthCare() {
+		return healthCare;
+	}
+
+	public void setHealthCare(String healthCare) {
+		this.healthCare = healthCare;
+	}
 
 	public static Entry toEntry( EntryDTO dto ) {
 		
@@ -132,6 +141,7 @@ public class EntryDTO {
 		Date birthDate
 			= Timing.date( String.format( "%s/%s/%s", dto.getBirthDay(), dto.getBirthMonth(), dto.getBirthYear() ) );
 		entry.setBirthDay( birthDate );
+		entry.setHealthCare( dto.getHealthCare() );
 		
 		entry.setTherapy( dto.getTherapy() );
 		entry.setSubject( dto.getSubject() );
@@ -145,11 +155,12 @@ public class EntryDTO {
 	@Override
 	public String toString() {
 		
-		return String.format( "{name=%s,telephone=%s,email=%s,birthDay=%s,therapy=%s,subject=%s,description=%s,availablity=%s}",
+		return String.format( "{name=%s,telephone=%s,email=%s,birthDay=%s,healthCare=%s,therapy=%s,subject=%s,description=%s,availablity=%s}",
 				this.name,
 				this.telephone,
 				this.email,
 				String.format( "%s/%s/%s", this.birthDay, this.birthMonth, this.birthYear ),
+				this.healthCare,
 				this.therapy.name(),
 				this.subject,
 				this.description,

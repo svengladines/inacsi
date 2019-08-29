@@ -100,19 +100,19 @@
 				<h3>Gegevens</h3>
 				
 				<div class="form-group">
-					<label for="organisation-name" class="col-sm-4 control-label">Voornaam en familienaam (*)</label>
+					<label for="name" class="col-sm-4 control-label">Voornaam en familienaam (*)</label>
 					<div class="col-sm-3">	
 						<input name="name" type="text" class="form-control" required="required"></input>
 					</div>
 				</div>
 				<div class="form-group">
-						<label for="organisation-telefoon" class="col-sm-4 control-label">Telefoonnummer (*)</label>
+						<label for="telephone" class="col-sm-4 control-label">Telefoonnummer (*)</label>
 						<div class="col-sm-2">
 							<input name="telephone" type="tel" class="form-control" required="required"></input>
 						</div>
 				</div>
 				<div class="form-group">
-						<label for="organisation-email" class="col-sm-4 control-label">E-mail (*)</label>
+						<label for="email" class="col-sm-4 control-label">E-mail (*)</label>
 						<div class="col-sm-3">
 							<input name="email" type="email" class="form-control" required="required" value=""></input>
 						</div>
@@ -148,6 +148,12 @@
     						<small>Indien de aanvraag een kind betreft, gelieve zijn of haar geboortedatum in te geven.</small>
     					</p>
     				</div>
+    				<div class="form-group">
+					<label for="healthcare" class="col-sm-4 control-label">Ziekenfonds</label>
+					<div class="col-sm-3">	
+						<input name="healthCare" type="text" class="form-control"></input>
+					</div>
+				</div>
   				</div>
 				
 				<h3>Aanvraag</h3>
@@ -187,9 +193,7 @@
 							</p>
 							<select id="therapist" name="preferredTherapist" class="form-control select-no-full-width">
 							<option value="none" selected="selected">Geen voorkeur</option>
-							<option value="belmans">Katrien Belmans</option>
 							<option value="jacobs">Laura Jacobs</option>
-							<option value="melotte">Katrien Melotte</option>
 							<option value="nys">Charlotte Nys</option>
 							<option value="poel">Sabine Poel</option>
 							<option value="vanhie">Thijs Vanhie</option>
@@ -316,7 +320,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<span><i class="fa fa-copyright"></i>&nbsp; ACSI 2018</span>
+				<span><i class="fa fa-copyright"></i>&nbsp; ACSI 2019</span>
 			</div>
 		</div>
 	</div>
