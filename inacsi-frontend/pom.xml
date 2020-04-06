@@ -7,8 +7,8 @@
   	<name>inacsi-frontend</name>
   	<description>inacsi-frontend</description>
 	<parent>
-		<artifactId>colloseum-parent-pom</artifactId>
-		<groupId>be.occam.colloseum</groupId>
+		<artifactId>occam-parent-pom</artifactId>
+		<groupId>be.occam</groupId>
 		<version>1.0-LATEST-SNAPSHOT</version>
 	</parent>
 	<properties>
