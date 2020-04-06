@@ -80,18 +80,6 @@ public class InAcsiApplicationConfig {
 			return new EntryService( acsiDigitaalEmailAddress, acsiEmailAddress );
 		}
 		
-		/*
-		@Bean
-		public PageService pageService( ) {
-			return new PageService(  );
-		}
-		
-		@Bean
-		public ArticleService articleService() {
-			return new ArticleService();
-		}
-		*/
-		
 	}
 	
 	@Configuration
@@ -107,27 +95,6 @@ public class InAcsiApplicationConfig {
 			return new Secretary();
 		}
 		
-		/*
-		@Bean
-		ArticleManager articleManager() {
-			return new ArticleManager();
-		}
-		*/
 	}
 	
-	@Configuration
-	@Profile({ConfigurationProfiles.PRODUCTION, ConfigurationProfiles.DEV})
-	public static class DataConfig {
-		
-		/*
-		@Bean
-		@Lazy( false )
-		public ProductionData productionData() {
-			return new ProductionData();
-		}
-		*/
-		
-	}
-	
-		
 }

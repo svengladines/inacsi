@@ -14,15 +14,10 @@ public class Secretary {
 		
 		this.therapists = map();
 		
-		this.therapists.put( "belmans", new Therapist( "Katrien", "Belmans" ) );
 		this.therapists.put("jacobs", new Therapist("Laura", "Jacobs") );
-		this.therapists.put("melotte", new Therapist("Katrien", "Melotte") );
 		this.therapists.put("nys", new Therapist("Charlotte", "Nys") );
 		this.therapists.put("poel", new Therapist("Sabine", "Poel" ) );
-		this.therapists.put("vanhie", new Therapist("Thijs", "Vanhie" ) );
-		this.therapists.put("vannooten", new Therapist("Ellen", "Van Nooten" ) );
 		this.therapists.put("verbiest", new Therapist("Siel", "Verbiest" ) );
-		this.therapists.put("verbruggen", new Therapist("Hanne", "Verbruggen" ) );
 		this.therapists.put("vuerinckx", new Therapist("Katrien", "Vuerinckx" ) );
 		
 	}
