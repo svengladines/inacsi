@@ -697,6 +697,25 @@ a:after {
 	padding-top: 20px;
 }
 
+.therapist-name {
+	font-size: large;
+	font-weight: bold;
+	text-align: left;
+}
+
+.therapist-card {
+	display: flex;
+}
+
+.therapist-card-item {
+	width: 50%;
+	padding: 1em 0em 1em 0em;
+}
+
+.img-therapist {
+	width: 80%;
+}
+
 .therapist ul {
 	list-style-type:none
 }
