@@ -708,12 +708,21 @@ a:after {
 }
 
 .therapist-card-item {
-	width: 50%;
 	padding: 1em 0em 1em 0em;
 }
 
-.img-therapist {
-	width: 80%;
+.therapist-card-item > ul {
+	padding-inline-start: 40px;
+}
+
+
+
+.therapist-card-img {
+	width: 33%;
+}
+
+.therapist-img {
+	width: 100%;
 }
 
 .therapist ul {
