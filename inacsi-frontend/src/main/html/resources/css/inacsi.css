@@ -715,10 +715,16 @@ a:after {
 	padding-inline-start: 40px;
 }
 
+.therapist-card-item > ul > li {
+	font-size: large;
+}
 
-
-.therapist-card-img {
+.therapist-card-item-one-third {
 	width: 33%;
+}
+
+.therapist-card-item-two-third {
+	width: 66%;
 }
 
 .therapist-img {
@@ -727,6 +733,10 @@ a:after {
 
 .therapist ul {
 	list-style-type:none
+}
+
+.toggle {
+	right: 2em;
 }
 
 .therapy {
