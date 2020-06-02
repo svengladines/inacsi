@@ -96,8 +96,8 @@
 .showcases .showcase {
 	position: relative;
 	text-align: center;
-	padding: 25px; 75px;
-	border: 1px solid #e6e6e6;
+	padding: 25px;
+	border: 1px solid #d6d6d6;
 	height: 100%;
 }
 
@@ -268,8 +268,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Paragraph & Typographic */
 p {
-    line-height: 28px;
-    margin-bottom: 25px;
+    line-height: 24px;
 }
 
 .cell {
@@ -689,12 +688,22 @@ a:after {
 	
 }
 
+.equal {
+  display: flex;
+  display: -webkit-flex;
+}
+
 #team-picture img {
 	width: 100%;
 }
 
 .therapist {
 	padding-top: 20px;
+	border: 1px solid #c6c6c6;
+}
+
+.therapist-more {
+	text-align: left;
 }
 
 .therapist-name {
@@ -705,6 +714,8 @@ a:after {
 
 .therapist-card {
 	display: flex;
+	justify-content: center;
+  	align-items: center;
 }
 
 .therapist-card-item {
@@ -712,6 +723,7 @@ a:after {
 }
 
 .therapist-card-item > ul {
+	list-style-type:none;
 	padding-inline-start: 40px;
 }
 
@@ -728,11 +740,11 @@ a:after {
 }
 
 .therapist-img {
-	width: 100%;
+	max-width: 80%;
 }
 
-.therapist ul {
-	list-style-type:none
+.therapist-more ul {
+	list-style-type: circle;
 }
 
 .toggle {
