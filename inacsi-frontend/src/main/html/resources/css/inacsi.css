@@ -260,15 +260,24 @@ h1, h2, h3, h4, h5, h6 {
 	border-style: solid;
 }
 
-.problem {
+.problem-even {
 	margin: 1em;
-	padding: 5px;
+	line-height: 2.5em;
+	text-transform: uppercase;
+}
+
+.problem-odd {
+	margin: 1em;
 	line-height: 2.5em;
 }
 
 /* Paragraph & Typographic */
 p {
     line-height: 24px;
+}
+
+.facebook > i {
+	color: navy;
 }
 
 .cell {
@@ -694,7 +703,10 @@ a:after {
 }
 
 #team-picture img {
-	width: 100%;
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 75%;
 }
 
 .therapist {
