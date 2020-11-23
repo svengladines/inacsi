@@ -14,6 +14,7 @@ public class Secretary {
 		
 		this.therapists = map();
 		
+		this.therapists.put("claes", new Therapist("Louise", "Claes") );
 		this.therapists.put("jacobs", new Therapist("Laura", "Jacobs") );
 		this.therapists.put("jacops", new Therapist("Sigrid", "Jacops") );
 		this.therapists.put("nys", new Therapist("Charlotte", "Nys") );
